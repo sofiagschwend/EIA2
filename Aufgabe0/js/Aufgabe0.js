@@ -5,3 +5,4 @@ function myFunction() {
         document.getElementById("demo").innerHTML = "Servus " + person;
     }
 }
+//# sourceMappingURL=Aufgabe0.js.map
