@@ -1,4 +1,4 @@
-namespace BoxesAufgabe {
+namespace Boxes {
     let n: number = 5;
     let c: string;
     let x: number = 0;
