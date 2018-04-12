@@ -17,6 +17,7 @@ namespace Boxes {
                 break;
             case 3:
                 continue;
+                
             default:
                 c = "#0000ff";
         }
