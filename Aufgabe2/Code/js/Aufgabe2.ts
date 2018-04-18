@@ -1,119 +1,138 @@
-namespace Aufgabe2 {
+namespace MemoryAufgabe2Verbessert {
 
-  //Variablen deklarieren
-  let words: string[] = ["Tag", "Nacht", "Wolke", "Sonne", "Mond", "Sterne", "Herbst", "Sommer", "Frühling", "Winter"];
+    /*Aufgabe: Aufgabe 2 - Memory
+      Name: Sofia Gschwend
+      Matrikel: 257664
+      Datum: 17.04.18
+      Dieser Code wurde in Zusammenarbeit mit Abreitsgruppe Grün und unter Anleitung von Melvin B erstellt.
+      */
+    /******************************************************************************************************************************
+    Code Reihenfolge: a) alle Variablen deklarieren b) Hauptfunktionen und Hauptablauf=Funktionsaufruf coden c) functions schreiben
+    ******************************************************************************************************************************/
+    
+    document.addEventListener("DOMContentLoaded", main);
 
-  let cards: HTMLElement[] = [];
+    // Variablen deklarieren
+    let cardContent: string[] = ["Tag", "Nacht", "Wolke", "Sonne", "Mond", "Sterne", "Herbst", "Sommer", "Frühling", "Winter"];
 
-  let numberCardPairs: number;
-  let numberPlayers: number;
+    let cardArray: HTMLElement[] = [];
+    // leeres Array, in das die für das Spiel benötigten Karten als divs hineingespeichert werden
 
-  let gameInfo: HTMLElement;
-  let gameBoard: HTMLElement;
+    let numPairs: number;
+    let numPlayers: number;
 
-  // Klasse Karte
-  class Card {
+    let playerInfo: HTMLElement; // HTMLElement ist komplexer Datentyp - string/number sind einfache Datentypen
+    let cardField: HTMLElement;
 
-    cardContent: string;
-    cardStatus: string;
-    card: HTMLElement;
+    let score: number = 0; //score wird später zählen, 0 ist Platzhalter
+    let name: string = "Spieler ";
 
-    constructor(_cardContent: string) {
-      this.cardContent = _cardContent;
+   
+    function main(): void {
 
-      /* zufälliger Kartenstatus generieren */
-      let randomStatus: number = Math.random();
-      if (randomStatus <= .5) {
-        this.cardStatus = "hidden";
-      } else if (randomStatus > .5 && randomStatus <= .75) {
-        this.cardStatus = "taken";
-      } else if (randomStatus > .75) {
-        this.cardStatus = "visible";
-      }
+        // Funktionsaufruf
+        cardPairs();
+        // Funktionsaufruf
+        numsPlayer();
+
+        // Informationen sollen in HTML eingefügt werden -> DOM abhängige Varaiblen erstellen = HTMLElement
+        playerInfo = document.getElementById("player-info"); // Stelle in HTML = Verknüpfung in HTML
+        cardField = document.getElementById("card-div");
+
+        // Spielkarten erzeugen - 2 mal createCard => 1Kartenpaar
+        // randomState - zufälliger STATUS der Karte
+        for (let i: number = 0; i < numPairs; i++) {
+            createCard(cardContent[i], randomState());
+            // cardContent an der Stelle i - wird als Übergabeparameter mitgegeben
+            createCard(cardContent[i], randomState());
+            // cardContent an der Stelle i - wird als Übergabeparameter mitgegeben
+        }
+
+        // Funktionsaufruf
+        randomMix(cardArray);
+
+        // Karten dem Spielbrett in cardField hinzufügen
+        for (let i: number = 0; i < cardArray.length; i++) {
+            cardField.appendChild(cardArray[i]);
+            // dem Spielbrett hinzufügen
+        }
+
+        // Spieler Anzeige generieren -> ersetzt class von Melvin
+        for (let i: number = 0; i < numPlayers; i++) {
+            createPlayer(score, name + [i + 1]);
+            // Aufruf der Funktion - score wird mitgegeben und die Variable name + Nummer des Spielers, die hochzählt | [i+1] damit Anzeigestart mit 1 nicht 0
+        }
+    }/****************** main function schließen*******************/
+    
+    
+        // parseInt wandelt string in number um weil numPairs number erwartet
+        // 10 am Ende legt Dezimalsystem für Eingabe fest
+    function cardPairs(): void {
+        numPairs = parseInt(prompt("Bitte die Anzahl der Kartenpaare festlegen", "5 - 10 Kartenpaare"), 10);
+        if (numPairs < 5 || numPairs > 10) {
+            cardPairs();
+            // Bei falscher Angabe erscheint das PopUp-Fenster erneut
+        }
     }
 
-    createCard(): HTMLElement[] {
-      this.card = document.createElement("div");
-      this.card.innerText = this.cardContent;
-      this.card.setAttribute("class", "card " + this.cardStatus);
-      cards.push(this.card);
-      return cards;
-    }
-  }
-
-  // Klasse Spieler
-  class Player {
-
-    score: number;
-    name: string;
-    player: HTMLElement;
-
-    constructor(_name: string) {
-      this.name = _name;
-      this.score = 0;
+    function numsPlayer(): void {
+        numPlayers = parseInt(prompt("Bitte die Anzahl der Spieler festlegen", "1 - 4 Spieler"), 10);
+        if (numPlayers > 4 || numPlayers < 1) {
+            numsPlayer();
+            // Bei falscher Angabe erscheint das PopUp-Fenster erneut
+        }
     }
 
-    scoreUp(): number {
-      this.score += 10;
-      return this.score;
+    function createCard(_textDerAufDieKarteSoll: string, _state: string): void { // Unterstrich = Parameter siehe CodingStyleGuide 
+        let card: HTMLElement = document.createElement("div");
+        // div erzeugen
+        card.innerText = _textDerAufDieKarteSoll;
+        // Text aus dem Array soll auf eine Karte
+        card.setAttribute("class", "card " + _state);
+        // Attribut zu div hinzufügen: class = CSS; card = zugehöriger Wert aus dem CSS Dokument
+        cardArray.push(card);
+        // cardArray = Array vom Anfang; Speicher für alle erzeugten Karten, die durch ".push" hinzugefügt werden
     }
 
-    show(): void {
-      this.player = document.createElement("div");
-      this.player.innerHTML = `
-        <span class="player-name">${this.name}</span>
-        <span class="player-score">Punkte: ${this.score}</span>`;
-      gameInfo.appendChild(this.player);
+    function createPlayer(_score: number, _name: string): void {
+        let player: HTMLElement = document.createElement("div");
+        let scoreField: HTMLElement = document.createElement("div");
+        // Umwandeln einer number in string - _score: number soll als string in scorefield angezeigt werden.
+        let n: string = _score.toString();
+        player.innerText = _name; //name ist Variable von oben = global
+        // deshalb ist scoreField = n
+        scoreField.innerText = n;
+        playerInfo.appendChild(player);
+        playerInfo.appendChild(scoreField);
     }
-  }
-
-  // Shuffle Array: Fisher-Yates Algorhitmus
-  function shuffleArray(_array: any[]): any[] {
-    for (let i: number = _array.length - 1; i > 0; i--) {
-      const j: number = Math.floor(Math.random() * (i + 1));
-      [_array[i], _array[j]] = [_array[j], _array[i]];
-    }
-    return _array;
-  }
-
-  function main(): void {
-    // Anzahl der Kartenpaare erfragen
-    numberCardPairs = parseInt(prompt("Bitte die Anzahl der Kartenpaare eingeben", "5 - 10 Kartenpaare"), 10);
-    if (numberCardPairs < 5 || numberCardPairs > 10) {
-      numberCardPairs = 8;
+    
+    // Shuffle Arrays
+    function randomMix(_array: HTMLElement[]): HTMLElement[] {
+        // _array = das Array, das durchmischt werden soll
+        for (let i: number = _array.length - 1; i > 0; i--) {
+            const j: number = Math.floor(Math.random() * (i + 1));
+            [_array[i], _array[j]] = [_array[j], _array[i]];
+        }
+        return _array;
+        // Ausgabe -> das Array ist jetzt durchgemischt
     }
 
-    // Anzahl der Spieler erfragen
-    numberPlayers = parseInt(prompt("Bitte die Anzahl der Spieler eingeben", "nicht mehr als 4 Spieler"), 10);
-    numberPlayers > 4 ? numberPlayers = 4 : numberPlayers = numberPlayers;
-
-    // DOM abhängige Variablen initialisieren
-    gameInfo = document.getElementById("game-info");
-    gameBoard = document.getElementById("card-container");
-
-    // Karten erzeugen
-    for (let i: number = 0; i < numberCardPairs; i++) {
-      let card: Card = new Card(words[i]);
-      card.createCard();
-
-      let pair: Card = new Card(words[i]);
-      pair.createCard();
+    // Zufallsgenerator als eigene funktion
+    function randomState(): string {
+        let randomState: number = Math.random();
+        // zufällige Zahl rein speichern, mit ganz vielen Kommastellen zwischen 0 und 1
+        if (randomState <= .5) {
+            // 50%ige Wahrscheinlichkeit, dass die Karte den Status: "hidden" hat
+            return "hidden";
+            // Status = hidden
+        } else if (randomState > .5 && randomState <= .75) {
+            // oder wenn: wenn Zahl größer als 0,5 und kleiner gleich 0,75 - dann Status: "taken"
+            return "taken";
+        } else if (randomState > .75) {
+            // oder wenn: Wenn Zahl größer als 0,75 - dann Status: "visible"
+            return "visible";
+        }
     }
 
-    // Karten mischen
-    shuffleArray(cards);
 
-    // Karten anzeigen
-    for (let i: number = 0; i < cards.length; i++) {
-      gameBoard.appendChild(cards[i]);
-    }
-
-    // Spieler Anzeige generieren
-    for (let i: number = 0; i < numberPlayers; i++) {
-      let player: Player = new Player("Spieler " + (i + 1));
-      player.show();
-    }
-
-  }
-  document.addEventListener("DOMContentLoaded", main);
 }
