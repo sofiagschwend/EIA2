@@ -1,10 +1,11 @@
-var MemoryAufgabe2Verbessert;
-(function (MemoryAufgabe2Verbessert) {
-    /*Aufgabe: Aufgabe 2 - Memory
+var MemoryAufgabe3;
+(function (MemoryAufgabe3) {
+    /*Aufgabe: Aufgabe 3 - Events
       Name: Sofia Gschwend
       Matrikel: 257664
-      Datum: 17.04.18
+      Datum: 20.04.18
       Dieser Code wurde in Zusammenarbeit mit Abreitsgruppe Gr�n und unter Anleitung von Melvin B erstellt.
+      Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
       */
     /******************************************************************************************************************************
     Code Reihenfolge: a) alle Variablen deklarieren b) Hauptfunktionen und Hauptablauf=Funktionsaufruf coden c) functions schreiben
@@ -14,11 +15,14 @@ var MemoryAufgabe2Verbessert;
     let cardContent = ["Tag", "Nacht", "Wolke", "Sonne", "Mond", "Sterne", "Herbst", "Sommer", "Fr�hling", "Winter"];
     let cardArray = [];
     // leeres Array, in das die f�r das Spiel ben�tigten Karten als divs hineingespeichert werden
+    /**Variablen f�r Events***/
+    let openArray = []; // leeres Array, in das der Karteninhalt zwischen gespeichert wird    
+    let openCards = 0;
     let numPairs;
     let numPlayers;
     let playerInfo; // HTMLElement ist komplexer Datentyp - string/number sind einfache Datentypen
     let cardField;
-    let score = 0; //score wird sp�ter z�hlen, 0 ist Platzhalter
+    let score = 0; // score wird sp�ter z�hlen, 0 ist Platzhalter
     let name = "Spieler ";
     function main() {
         // Funktionsaufruf
@@ -29,11 +33,10 @@ var MemoryAufgabe2Verbessert;
         playerInfo = document.getElementById("player-info"); // Stelle in HTML = Verkn�pfung in HTML
         cardField = document.getElementById("card-div");
         // Spielkarten erzeugen - 2 mal createCard => 1Kartenpaar
-        // randomState - zuf�lliger STATUS der Karte
         for (let i = 0; i < numPairs; i++) {
-            createCard(cardContent[i], randomState());
+            createCard(cardContent[i]);
             // cardContent an der Stelle i - wird als �bergabeparameter mitgegeben
-            createCard(cardContent[i], randomState());
+            createCard(cardContent[i]);
         }
         // Funktionsaufruf
         randomMix(cardArray);
@@ -45,9 +48,9 @@ var MemoryAufgabe2Verbessert;
         for (let i = 0; i < numPlayers; i++) {
             createPlayer(score, name + [i + 1]);
         }
+        cardField.addEventListener("click", clickHandler); // Eventlistener liegt auf cardField
+        // Verweis auf die Funktion clickHandler
     } /****************** main function schlie�en*******************/
-    // parseInt wandelt string in number um weil numPairs number erwartet
-    // 10 am Ende legt Dezimalsystem f�r Eingabe fest
     function cardPairs() {
         numPairs = parseInt(prompt("Bitte die Anzahl der Kartenpaare festlegen", "5 - 10 Kartenpaare"), 10);
         if (numPairs < 5 || numPairs > 10) {
@@ -60,20 +63,9 @@ var MemoryAufgabe2Verbessert;
             numsPlayer();
         }
     }
-    function createCard(_textDerAufDieKarteSoll, _state) {
-        let card = document.createElement("div");
-        // div erzeugen
-        card.innerText = _textDerAufDieKarteSoll;
-        // Text aus dem Array soll auf eine Karte
-        card.setAttribute("class", "card " + _state);
-        // Attribut zu div hinzuf�gen: class = CSS; card = zugeh�riger Wert aus dem CSS Dokument
-        cardArray.push(card);
-        // cardArray = Array vom Anfang; Speicher f�r alle erzeugten Karten, die durch ".push" hinzugef�gt werden
-    }
     function createPlayer(_score, _name) {
         let player = document.createElement("div");
-        let scoreField = document.createElement("div");
-        // Umwandeln einer number in string - _score: number soll als string in scorefield angezeigt werden.
+        let scoreField = document.createElement("div"); // Umwandeln einer number in string - _score: number soll als string in scorefield angezeigt werden.
         let n = _score.toString();
         player.innerText = _name; //name ist Variable von oben = global
         // deshalb ist scoreField = n
@@ -81,32 +73,65 @@ var MemoryAufgabe2Verbessert;
         playerInfo.appendChild(player);
         playerInfo.appendChild(scoreField);
     }
-    // Shuffle Arrays
+    function createCard(_textDerAufDieKarteSoll) {
+        let card = document.createElement("div"); // div erzeugen
+        card.innerHTML = `<span>${_textDerAufDieKarteSoll}</span>`; //  innerHTML erwartet string `` | span = HTMLElement Kontainer mit spezifischer Zuweisung | $ = 'string' + variable + 'string'
+        // Text aus dem Array soll auf eine Karte
+        card.setAttribute("class", "card hidden");
+        // Attribut zu div hinzuf�gen: class = CSS; card = zugeh�riger Wert aus dem CSS Dokument
+        cardArray.push(card); // cardArray = Array vom Anfang; Speicher f�r alle erzeugten Karten, die durch ".push" hinzugef�gt werden
+    }
     function randomMix(_array) {
-        // _array = das Array, das durchmischt werden soll
         for (let i = _array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [_array[i], _array[j]] = [_array[j], _array[i]];
         }
-        return _array;
-        // Ausgabe -> das Array ist jetzt durchgemischt
+        return _array; // Ausgabe -> das Array ist jetzt durchgemischt
     }
-    // Zufallsgenerator als eigene funktion
-    function randomState() {
-        let randomState = Math.random();
-        // zuf�llige Zahl rein speichern, mit ganz vielen Kommastellen zwischen 0 und 1
-        if (randomState <= .5) {
-            // 50%ige Wahrscheinlichkeit, dass die Karte den Status: "hidden" hat
-            return "hidden";
+    function clickHandler(_event) {
+        let cardClass = _event.target; // Gibt das HTMLElement zur�ck, das den Event ausgel�st hat
+        if (cardClass.classList.contains("card")) {
+            openCards++; // Counter
+            if (cardClass.classList.contains("hidden")) {
+                cardClass.classList.remove("hidden"); // Klassen-Namen "hidden" wird gel�scht
+                cardClass.classList.add("visible"); // Klassen-Namen wird auf "visible" gesetzt
+            }
         }
-        else if (randomState > .5 && randomState <= .75) {
-            // oder wenn: wenn Zahl gr��er als 0,5 und kleiner gleich 0,75 - dann Status: "taken"
-            return "taken";
+        if (openCards == 2) {
+            setTimeout(cardsCompare, 1500); // Timeout f�r 2000 ms bzw. 1,5 Sekunden
         }
-        else if (randomState > .75) {
-            // oder wenn: Wenn Zahl gr��er als 0,75 - dann Status: "visible"
-            return "visible";
+        if (openCards > 2) {
+            cardClass.classList.remove("visible");
+            cardClass.classList.add("hidden");
         }
     }
-})(MemoryAufgabe2Verbessert || (MemoryAufgabe2Verbessert = {}));
+    function cardsCompare() {
+        let openArray = filterCardsByClass("visible"); // Definition des openArray, solle Funktion filterCardsByClass ausf�hren
+        if (openArray[0].children[0].innerHTML == openArray[1].children[0].innerHTML) {
+            for (let f = 0; f < openArray.length; f++) {
+                openArray[f].classList.remove("visible"); // "visible" wird entfernt
+                openArray[f].classList.add("taken"); // und durch "taken" ersetzt
+            }
+        }
+        else {
+            for (let f = 0; f < openArray.length; f++) {
+                openArray[f].classList.remove("visible"); // "visible" wird entfernt
+                openArray[f].classList.add("hidden"); // und durch "hidden" ersetzt
+            }
+        }
+        congratAlert(); // Funktionsaufruf
+        openArray = []; // leeres openArray - Array wird aufgerufen
+        openCards = 0; // openCards auf 0 setzen
+    }
+    function filterCardsByClass(_filter) {
+        return cardArray.filter(card => card.classList.contains(_filter)); // gibt dem cardArray einen Filter mit, der nach der CSS-Klasse filtert |  card (aus dem CSS-Dokument)
+    }
+    function congratAlert() {
+        let cardsTaken = filterCardsByClass("hidden");
+        if (cardsTaken.length == 0) {
+            alert("Mensch bist du gut!");
+        }
+        cardsTaken = [];
+    }
+})(MemoryAufgabe3 || (MemoryAufgabe3 = {})); // namespace schlie�en
 //# sourceMappingURL=Aufgabe3.js.map
