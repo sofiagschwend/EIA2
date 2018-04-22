@@ -4,8 +4,7 @@ var MemoryAufgabe3;
       Name: Sofia Gschwend
       Matrikel: 257664
       Datum: 20.04.18
-      Dieser Code wurde in Zusammenarbeit mit Abreitsgruppe Gr�n und unter Anleitung von Melvin B erstellt.
-      Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+      Dieser Code wurde in Zusammenarbeit mit Alena Hurst und Franziska Hei� geschrieben wurde.
       */
     /******************************************************************************************************************************
     Code Reihenfolge: a) alle Variablen deklarieren b) Hauptfunktionen und Hauptablauf=Funktionsaufruf coden c) functions schreiben
