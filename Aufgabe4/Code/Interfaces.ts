@@ -1,8 +1,9 @@
 namespace L04_Interfaces {
-    // Struktur des heterogenen assoziativen Arrays als Datensatz fÃ¼r eine studierende Person
+    // Struktur des heterogenen assoziativen Arrays als Datensatz für eine studierende Person
     export interface Studi {
         name: string;
         firstname: string;
+        studyPath: string;          //Studiengang
         matrikel: number;
         age: number;
         gender: boolean;

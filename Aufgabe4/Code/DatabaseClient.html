@@ -13,12 +13,12 @@
 		<input type="text" name="name" placeholder="name"/>
 		<input type="text" name="firstname" placeholder="firstname"/>
 		<div>Select your study path:
-		<select>
-			<option value="mkb">MKB</option>
-			<option value="mib">MIB</option>
-			<option value="omb">OMB</option>
-		</select>
-		</div>
+			<select name="studyPath" id="select">
+				<option value="MKB">MKB</option>
+				<option value="MIB">MIB</option>
+				<option value="OMB">OMB</option>
+			</select>
+		</div>		
 		<input type="text" name="matrikel" placeholder="matrikel"/>
 		<input type="number" name="age" placeholder="age" min="1" max="120"/>
 		<input type="radio" name="gender" value="male" id="male"/>
@@ -30,7 +30,13 @@
 	<fieldset id="output">
 		<legend> All student data </legend>
 		<button type="button" id="refresh">Refresh</button>
-		<textarea rows="20" cols="90"> </textarea>
+		<textarea rows="10" cols="90"> </textarea>
+	</fieldset>
+	<fieldset id="search">												<!-- Search field einfügen -->
+	<legend>Search for student by matrikel</legend>
+	<input type="text" name="matrikel" placeholder="matrikel"/>
+	<button type="button" id="search">Search</button>
+	<textarea id="searchResult" rows="7" cols="90"> </textarea>
 	</fieldset>
 </body>
 </html>

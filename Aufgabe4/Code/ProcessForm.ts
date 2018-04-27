@@ -5,18 +5,22 @@ namespace L04_Interfaces {
         console.log("Init");
         let insertButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insert");
         let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
+        let searchButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("search");             // searchButton
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
+       // searchButton.addEventListener("click", search);                WARUM KANN SEARCH NCIHT FINDEN?                                         // searchButton
     }
 
     function insert(_event: Event): void {
         let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
         let genderButton: HTMLInputElement = <HTMLInputElement>document.getElementById("male");
+        let studyPath: HTMLSelectElement = <HTMLSelectElement>document.getElementById("select");  //Studiengang
         let matrikel: string = inputs[2].value;
         let studi: Studi;
         studi = {
             name: inputs[0].value,
             firstname: inputs[1].value,
+            studyPath: studyPath.value,          //Studiengang definieren was gespeichert werden soll.
             matrikel: parseInt(matrikel),
             age: parseInt(inputs[3].value),
             gender: genderButton.checked
@@ -36,16 +40,27 @@ namespace L04_Interfaces {
     function refresh(_event: Event): void {
         let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[0];
         output.value = "";
-        // for-in-Schleife iteriert Ã¼ber die SchlÃ¼ssel des assoziativen Arrays
+        // for-in-Schleife iteriert über die Schlüssel des assoziativen Arrays
         for (let matrikel in studiHomoAssoc) {  // Besonderheit: Type-Annotation nicht erlaubt, ergibt sich aus der Interface-Definition
             let studi: Studi = studiHomoAssoc[matrikel];
             let line: string = matrikel + ": ";
             line += studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
+            line += studi.studyPath;                            // Studiengang ausgeben nach refresh drücken
             line += studi.gender ? "(M)" : "(F)";
             output.value += line + "\n";
         }
+        
+    //Funktion nach Matrikelnummer suchen -> verknüft mit searchButton
+        function search (_event: Event): void {
+      //   let result: HTMLTextAreaElement = document.getElementById("searchResult")[0];   // das muss doch genauso funktionieren wie die refresh Ausgabe
+      //      result.value = "";                                                             // , nur passender Matrikelnummer ausgeben           
+            
+        
+        }
+        
+        
 
-        // zusÃ¤tzliche Konsolenausgaben zur Demonstration
+        // zusätzliche Konsolenausgaben zur Demonstration
         console.group("Simple Array");
         console.log(studiSimpleArray);
         console.groupEnd();
