@@ -1,14 +1,25 @@
+
+/*    Aufgabe: Aufgabe 4 - Übung
+      Name: Sofia Gschwend
+      Matrikel: 257664
+      Datum: 02.05.18
+    
+      Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+      Dieser Code wurde zusammen mit Franziska Heiß und Alena Hurst erarbeitet.
+*/
 namespace L04_Interfaces {
+    
     window.addEventListener("load", init);
 
     function init(_event: Event): void {
         console.log("Init");
         let insertButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insert");
         let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
-        let searchButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("search");             // searchButton
+        let searchButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("searchButton");
+        
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
-       // searchButton.addEventListener("click", search);                WARUM KANN SEARCH NCIHT FINDEN?                                         // searchButton
+        searchButton.addEventListener("click", search);
     }
 
     function insert(_event: Event): void {
@@ -17,6 +28,7 @@ namespace L04_Interfaces {
         let studyPath: HTMLSelectElement = <HTMLSelectElement>document.getElementById("select");  //Studiengang
         let matrikel: string = inputs[2].value;
         let studi: Studi;
+        
         studi = {
             name: inputs[0].value,
             firstname: inputs[1].value,
@@ -41,32 +53,43 @@ namespace L04_Interfaces {
         let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[0];
         output.value = "";
         // for-in-Schleife iteriert über die Schlüssel des assoziativen Arrays
+        
         for (let matrikel in studiHomoAssoc) {  // Besonderheit: Type-Annotation nicht erlaubt, ergibt sich aus der Interface-Definition
             let studi: Studi = studiHomoAssoc[matrikel];
             let line: string = matrikel + ": ";
             line += studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
-            line += studi.studyPath;                            // Studiengang ausgeben nach refresh drücken
-            line += studi.gender ? "(M)" : "(F)";
+            line += studi.studyPath + ", ";                            // Studiengang ausgeben nach refresh drücken
+            line += studi.gender ? "männlich" : "weiblich";
             output.value += line + "\n";
         }
+    }
+
+    function search(_event: Event): void {
+        let output: HTMLTextAreaElement = <HTMLTextAreaElement>document.getElementById("textarea2");
+        output.value = "";
+        let matrikel: number = parseInt((<HTMLInputElement>document.getElementById("matrikelNr")).value);
+        let studi: Studi = studiHomoAssoc[matrikel];
         
-    //Funktion nach Matrikelnummer suchen -> verknüft mit searchButton
-        function search (_event: Event): void {
-      //   let result: HTMLTextAreaElement = document.getElementById("searchResult")[0];   // das muss doch genauso funktionieren wie die refresh Ausgabe
-      //      result.value = "";                                                             // , nur passender Matrikelnummer ausgeben           
-            
-        
+        if (typeof studi === "undefined") {
+            output.value += "Kein Suchergebnis gefunden";
         }
         
-        
-
-        // zusätzliche Konsolenausgaben zur Demonstration
-        console.group("Simple Array");
-        console.log(studiSimpleArray);
-        console.groupEnd();
-
-        console.group("Associatives Array (Object)");
-        console.log(studiHomoAssoc);
-        console.groupEnd();
+        else {
+            let line: string = matrikel + ": ";
+            line += studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre, ";
+            line += studi.studyPath + ", ";                            
+            line += studi.gender ? "männlich" : "weiblich";
+            output.value += line + "\n";
+        }
+    
     }
+
+    // zusätzliche Konsolenausgaben zur Demonstration
+    console.group("Simple Array");
+    console.log(studiSimpleArray);
+    console.groupEnd();
+
+    console.group("Associatives Array (Object)");
+    console.log(studiHomoAssoc);
+    console.groupEnd();
 }

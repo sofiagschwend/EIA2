@@ -1,3 +1,11 @@
+/*    Aufgabe: Aufgabe 4 - �bung
+      Name: Sofia Gschwend
+      Matrikel: 257664
+      Datum: 02.05.18
+    
+      Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+      Dieser Code wurde zusammen mit Franziska Hei� und Alena Hurst erarbeitet.
+*/
 var L04_Interfaces;
 (function (L04_Interfaces) {
     window.addEventListener("load", init);
@@ -5,10 +13,10 @@ var L04_Interfaces;
         console.log("Init");
         let insertButton = document.getElementById("insert");
         let refreshButton = document.getElementById("refresh");
-        let searchButton = document.getElementById("search"); // searchButton
+        let searchButton = document.getElementById("searchButton");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
-        // searchButton.addEventListener("click", search);                WARUM KANN SEARCH NCIHT FINDEN?                                         // searchButton
+        searchButton.addEventListener("click", search);
     }
     function insert(_event) {
         let inputs = document.getElementsByTagName("input");
@@ -40,22 +48,33 @@ var L04_Interfaces;
             let studi = L04_Interfaces.studiHomoAssoc[matrikel];
             let line = matrikel + ": ";
             line += studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
-            line += studi.studyPath; // Studiengang ausgeben nach refresh dr�cken
-            line += studi.gender ? "(M)" : "(F)";
+            line += studi.studyPath + ", "; // Studiengang ausgeben nach refresh dr�cken
+            line += studi.gender ? "m�nnlich" : "weiblich";
             output.value += line + "\n";
         }
-        //Funktion nach Matrikelnummer suchen -> verkn�ft mit searchButton
-        function search(_event) {
-            //   let result: HTMLTextAreaElement = document.getElementById("searchResult")[0];   // das muss doch genauso funktionieren wie die refresh Ausgabe
-            //      result.value = "";                                                             // , nur passender Matrikelnummer ausgeben           
-        }
-        // zus�tzliche Konsolenausgaben zur Demonstration
-        console.group("Simple Array");
-        console.log(L04_Interfaces.studiSimpleArray);
-        console.groupEnd();
-        console.group("Associatives Array (Object)");
-        console.log(L04_Interfaces.studiHomoAssoc);
-        console.groupEnd();
     }
+    function search(_event) {
+        let output = document.getElementById("textarea2");
+        output.value = "";
+        let matrikel = parseInt(document.getElementById("matrikelNr").value);
+        let studi = L04_Interfaces.studiHomoAssoc[matrikel];
+        if (typeof studi === "undefined") {
+            output.value += "Kein Suchergebnis gefunden";
+        }
+        else {
+            let line = matrikel + ": ";
+            line += studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre, ";
+            line += studi.studyPath + ", ";
+            line += studi.gender ? "m�nnlich" : "weiblich";
+            output.value += line + "\n";
+        }
+    }
+    // zus�tzliche Konsolenausgaben zur Demonstration
+    console.group("Simple Array");
+    console.log(L04_Interfaces.studiSimpleArray);
+    console.groupEnd();
+    console.group("Associatives Array (Object)");
+    console.log(L04_Interfaces.studiHomoAssoc);
+    console.groupEnd();
 })(L04_Interfaces || (L04_Interfaces = {}));
 //# sourceMappingURL=ProcessForm.js.map

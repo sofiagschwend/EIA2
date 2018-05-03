@@ -7,19 +7,20 @@
 <script src="Interfaces.js" type="text/javascript" charset="utf-8"></script>
 <script src="ProcessForm.js" type="text/javascript" charset="utf-8"></script>
 </head>
-<body>
+<body>	
+
 	<fieldset id="input">
 		<legend> Type student data here </legend>
 		<input type="text" name="name" placeholder="name"/>
 		<input type="text" name="firstname" placeholder="firstname"/>
+		<input type="text" name="matrikel" placeholder="matrikel"/>
 		<div>Select your study path:
-			<select name="studyPath" id="select">
+			<select name="studypath" id="select">
 				<option value="MKB">MKB</option>
 				<option value="MIB">MIB</option>
 				<option value="OMB">OMB</option>
 			</select>
-		</div>		
-		<input type="text" name="matrikel" placeholder="matrikel"/>
+		</div>			
 		<input type="number" name="age" placeholder="age" min="1" max="120"/>
 		<input type="radio" name="gender" value="male" id="male"/>
 		<label for="male">Male</label>
@@ -27,16 +28,19 @@
 		<label for="female">Female</label>
 		<button type="button" id="insert">Insert to database</button>
 	</fieldset>
+	
 	<fieldset id="output">
 		<legend> All student data </legend>
 		<button type="button" id="refresh">Refresh</button>
 		<textarea rows="10" cols="90"> </textarea>
 	</fieldset>
+	
 	<fieldset id="search">												<!-- Search field einfügen -->
 	<legend>Search for student by matrikel</legend>
-	<input type="text" name="matrikel" placeholder="matrikel"/>
-	<button type="button" id="search">Search</button>
-	<textarea id="searchResult" rows="7" cols="90"> </textarea>
+	<input type="text" name="search" placeholder="matrikel" id="matrikelNr"/>
+	<button type="button" id="searchButton">Search</button>
+	<textarea id="textarea2" rows="7" cols="90"> </textarea>						// searchResult
 	</fieldset>
+	
 </body>
 </html>
