@@ -45,7 +45,7 @@ namespace Aufgabe4 {
             player.setAttribute("placeholder", "Spielernamen eingeben");
             player.setAttribute("name", "player");
             player.setAttribute("maxlength", "15");
-            player.setAttribute("id", "player");
+            player.setAttribute("class", "player");
             document.getElementById("names").appendChild(player);
             // über die ID wird das Input-Feld dem "player" hinzugefügt
             playerCounter++;
@@ -55,7 +55,9 @@ namespace Aufgabe4 {
 
     // Spieler entfernen bei KLick auf Button
     function removePlayer(): void {
-        document.getElementById("player").remove();
+        let allPlayer: NodeListOf<Element> = document.getElementsByClassName("player");
+        let lastPlayer: HTMLInputElement = <HTMLInputElement>allPlayer[allPlayer.length -1];
+        lastPlayer.remove();
         playerCounter--;
         // playerCounter zÃ¤hlt eins runter
     }
@@ -104,7 +106,7 @@ namespace Aufgabe4 {
         // cardArray = Array vom Anfang; Speicher für alle erzeugten Karten, die durch ".push" hinzugefügt werden
         checkContent.push(card);
         // Alle Karten werden in checkContent-Array gepusht
-        // card.addEventListener("click", clickHandler);
+        card.addEventListener("click", clickHandler);
     }
 
     function clickHandler (_event: MouseEvent) : void {
@@ -219,7 +221,5 @@ namespace Aufgabe4 {
         playerInfo = document.getElementById("player-info");
         cardField = document.getElementById("card-div");
 
-        cardField.addEventListener("click", clickHandler);
-        // Verweis auf die Funktion clickHandler
     }
 }
