@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+Aufgabe: Aufgabe5 - Fragen
+         Name: Sofia Gschwend
+         Matrikel: 257664
+         Datum: 10.05.18 -->
+         
+<meta charset="ISO-8859-1">
+<title>Aufgabe5 - Fragen + Antworten</title>
+</head>
+<body>
+	<h1>Fragen & Antworten</h1>
+	    <div>
+			  <p><strong>1. Was beschreibt das Interface <i>AssocStringString</i> und wozu kann es verwendet werden?</strong><br>
+			  		Das Interface ist ein homogenes assiziatives Array, dem ein Key hinzugefügt wird.
+			  </p>
+			  <p><strong>2. Was geschieht in Zeile 9 und was ist das Ergebnis?</strong><br>
+			  		Es wird eine Variable port angelegt, die eine process environment für einen Port anlegt, also die Umgebung eines Ports.<br>
+			  		Diese Variable port wird in Zeile 10 und 11 auf Nummer 8100 gesetzt.<br>
+			  		Mit dem Port als 'Türnummer' kann auf den 'localhost' (der zuvor im Eclipse Terminal gestartet wurde) über den Browser zugegriffen werden.
+			  </p>
+			  <p><strong>3. Was geschieht in Zeile 25 von ServerTest.ts?<br>
+					<i>let query: AssocStringString = Url.parse(_request.url, true).query;</i></strong><br>
+			  		Es wird die Variable 'query' erstellt vom Typ des 'AssocStringString' Interfaces das einen Schlüssel als string erwartet.<br>
+			  		Die 'Url.parse()' wandelt einen URL-String um und gibt ein URL-Objekt zurück.<br>
+			  		Wenn 'Url.parse()' true ist, dann wird aus query ein neues Objekt vom Interface 'AssocStringString'<br>
+			  		Die '_request.url' (Anfrage an Server) kann dann das angefügte 'query' als Objekt (also a und b) ausgegeben.
+			  </p>
+			  <p><strong>4. Wie arbeitet die <i>for-in-Schleife</i> in Zeile 29?</strong><br>
+			  		Die for-in-Schleife ist für Objekte gedacht, werden alle nicht belegten Array-Stellen einfach übergangen.<br>
+			  		Sie iteriert über die Schlüssel des assoziativen Arrays 'AssocStringString'.<br>
+			  		Und gibt das angelegte Verzeichnis 'query' aus zu der Schlüssel 'key' passt.
+			  </p>
+			  <p><strong>5. Was bewirkt die Header-Information <i>Access-Control-Allow-Origin</i>? </strong><br>
+			  		Erlaubt dem Client den Inhalt dieser Seite im Header(Origin) darzustellen.
+			  </p>
+		</div>
+</body>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+html {
+	font-family: 'Raleway', sans-serif;
+}
+
+</style>
+</html>
