@@ -1,4 +1,4 @@
-namespace Aufgabe6_Interfaces {
+namespace Aufgabe6 {
     // Struktur des heterogenen assoziativen Arrays als Datensatz für eine studierende Person
     export interface Studi {
         name: string;

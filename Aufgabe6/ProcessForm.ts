@@ -7,7 +7,7 @@
       Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
       Dieser Code wurde zusammen mit Franziska Heiﬂ und Alena Hurst erarbeitet.
 */
-namespace Aufgabe6_Interfaces {
+namespace Aufgabe6 {
     window.addEventListener("load", init);
     let address: string = "https://eia2node-sofiagschwend.herokuapp.com/";
 
