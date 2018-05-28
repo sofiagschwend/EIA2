@@ -6,10 +6,10 @@
       Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
       Dieser Code wurde zusammen mit Franziska Hei� und Alena Hurst erarbeitet.
 */
-var Aufgabe6_Interfaces;
-(function (Aufgabe6_Interfaces) {
+var Aufgabe6;
+(function (Aufgabe6) {
     window.addEventListener("load", init);
-    let address = "https://eia2node-sofiagschwend.herokuapp.com/";
+    let address = "https://eia2node-sofiagschwend.herokuapp.com";
     let inputs = document.getElementsByTagName("input");
     function init(_event) {
         console.log("Init");
@@ -74,5 +74,5 @@ var Aufgabe6_Interfaces;
             output.value += xhr.response;
         }
     }
-})(Aufgabe6_Interfaces || (Aufgabe6_Interfaces = {}));
+})(Aufgabe6 || (Aufgabe6 = {}));
 //# sourceMappingURL=ProcessForm.js.map
