@@ -1,95 +1,78 @@
-/*    Aufgabe: Aufgabe 4 - �bung
+/*   Aufgabe: Aufgabe 4 - �bung
       Name: Sofia Gschwend
       Matrikel: 257664
       Datum: 02.05.18
     
       Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
       Dieser Code wurde zusammen mit Franziska Hei� und Alena Hurst erarbeitet.
-
-namespace Aufgabe6_Interfaces {
-    
+*/
+var Aufgabe6_Interfaces;
+(function (Aufgabe6_Interfaces) {
     window.addEventListener("load", init);
-
-    function init(_event: Event): void {
+    let address = "https://eia2node-sofiagschwend.herokuapp.com/";
+    let inputs = document.getElementsByTagName("input");
+    function init(_event) {
         console.log("Init");
-        let insertButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insert");
-        let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
-        let searchButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("searchButton");
-        
+        let insertButton = document.getElementById("insert");
+        let refreshButton = document.getElementById("refresh");
+        let searchButton = document.getElementById("checkSearch");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
         searchButton.addEventListener("click", search);
     }
-
-    function insert(_event: Event): void {
-        let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
-        let genderButton: HTMLInputElement = <HTMLInputElement>document.getElementById("male");
-        let studyPath: HTMLSelectElement = <HTMLSelectElement>document.getElementById("select");  //Studiengang
-        let matrikel: string = inputs[2].value;
-        let studi: Studi;
-        
+    function insert(_event) {
+        let genderButton = document.getElementById("male");
+        let matrikel = inputs[2].value;
+        let studi;
         studi = {
             name: inputs[0].value,
             firstname: inputs[1].value,
-            studyPath: studyPath.value,          //Studiengang definieren was gespeichert werden soll.
+            studyPath: document.getElementsByTagName("select").item(0).value,
             matrikel: parseInt(matrikel),
-            age: parseInt(inputs[3].value),
+            age: parseInt(inputs[4].value),
             gender: genderButton.checked
         };
-
-        console.log(studi);
-        console.log(studi.age);
-        console.log(studi["age"]);
-
-        // Datensatz im assoziativen Array unter der Matrikelnummer speichern
-        studiHomoAssoc[matrikel] = studi;
-
-        // nur um das auch noch zu zeigen...
-        studiSimpleArray.push(studi);
+        let convert = JSON.stringify(studi);
+        console.log(convert);
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", address + "?command=insert&data=" + convert, true);
+        xhr.addEventListener("readystatechange", handleStateChangeInsert);
+        xhr.send();
     }
-
-    function refresh(_event: Event): void {
-        let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[0];
+    function handleStateChangeInsert(_event) {
+        var xhr = _event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            alert(xhr.response);
+        }
+    }
+    function refresh(_event) {
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", address + "?command=refresh", true);
+        xhr.addEventListener("readystatechange", handleStateChangeRefresh);
+        xhr.send();
+    }
+    function handleStateChangeRefresh(_event) {
+        let output = document.getElementsByTagName("textarea")[0];
         output.value = "";
-        // for-in-Schleife iteriert �ber die Schl�ssel des assoziativen Arrays
-        
-        for (let matrikel in studiHomoAssoc) {  // Besonderheit: Type-Annotation nicht erlaubt, ergibt sich aus der Interface-Definition
-            let studi: Studi = studiHomoAssoc[matrikel];
-            let line: string = matrikel + ": ";
-            line += studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre ";
-            line += studi.studyPath + ", ";                            // Studiengang ausgeben nach refresh dr�cken
-            line += studi.gender ? "m�nnlich" : "weiblich";
-            output.value += line + "\n";
+        var xhr = _event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            output.value += xhr.response;
         }
     }
-
-    function search(_event: Event): void {
-        let output: HTMLTextAreaElement = <HTMLTextAreaElement>document.getElementById("textarea2");
+    function search(_event) {
+        let mtrkl = inputs[6].value;
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", address + "?command=search&searchFor=" + mtrkl, true);
+        xhr.addEventListener("readystatechange", handleStateChangeSearch);
+        xhr.send();
+    }
+    function handleStateChangeSearch(_event) {
+        let output = document.getElementsByTagName("textarea")[1];
         output.value = "";
-        let matrikel: number = parseInt((<HTMLInputElement>document.getElementById("matrikelNr")).value);
-        let studi: Studi = studiHomoAssoc[matrikel];
-        
-        if (typeof studi === "undefined") {
-            output.value += "Kein Suchergebnis gefunden";
+        var xhr = _event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            output.value += xhr.response;
         }
-        
-        else {
-            let line: string = matrikel + ": ";
-            line += studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre, ";
-            line += studi.studyPath + ", ";
-            line += studi.gender ? "m�nnlich" : "weiblich";
-            output.value += line + "\n";
-        }
-    
     }
-
-    // zus�tzliche Konsolenausgaben zur Demonstration
-    console.group("Simple Array");
-    console.log(studiSimpleArray);
-    console.groupEnd();
-
-    console.group("Associatives Array (Object)");
-    console.log(studiHomoAssoc);
-    console.groupEnd();
-}*/ 
+})(Aufgabe6_Interfaces || (Aufgabe6_Interfaces = {}));
 //# sourceMappingURL=ProcessForm.js.map
