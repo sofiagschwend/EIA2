@@ -1,7 +1,7 @@
 var Aufgabe6;
 (function (Aufgabe6) {
     window.addEventListener("load", init);
-    let address = "https://eia2node-franziheiss.herokuapp.com";
+    let address = "https://eia2node-sofiagschwend.herokuapp.com";
     let inputs = document.getElementsByTagName("input");
     function init(_event) {
         console.log("Init");
@@ -12,8 +12,7 @@ var Aufgabe6;
         refreshButton.addEventListener("click", refresh);
         searchButton.addEventListener("click", search);
     }
-    //Funktionen zur Antwortaufbereitung
-    //Funktion f�r die Eingabe und �bergabe der Daten
+    // Input und Send Data
     function insert(_event) {
         let genderButton = document.getElementById("male");
         let matrikel = inputs[2].value;
@@ -26,16 +25,11 @@ var Aufgabe6;
             gender: genderButton.checked,
             studyPath: document.getElementsByTagName("select").item(0).value
         };
-        let convert = JSON.stringify(studi);
-        // JavaScript-JSON-Objekt wird in einen string umgewandelt
+        let convert = JSON.stringify(studi); // JavaScript-JSON-Objekt wird in einen string umgewandelt
         console.log(convert);
         let xhr = new XMLHttpRequest();
-        xhr.open("GET", address + "?command=insert&data=" + convert, true);
-        // "GET": Methode, mit der Daten versendet werden
-        // address: Internetaddresse vom Datentyp string (zuvor in einer Varaible gespeichert)
-        // ?command=insert&data=: wird an die Internetaddresse angeh�ngt
-        // convert: an die Internetaddresse werden die Daten aus dem Interface als string angeh�ngt
-        // true: Asynchronous, zu einem sp�teren Zeitpunkt kann festgestellt werden, welche Antwort zu welcher Anfrage geh�rt
+        xhr.open("GET", address + "?command=insert&data=" + convert, true); // "GET": Methode, mit der Daten versendet werden /adresse von stringify /?command=insert&data=: wird an die Internetaddresse angeh�ngt
+        // convert: URL + Daten aus Interface als string /true: Asynchronous, Browser wartet nicht auf Antwort -> sp�ter kann Antwort zu Anfrage zugeordnet werden
         xhr.addEventListener("readystatechange", handleStateChangeInsert);
         xhr.send();
     }
@@ -45,7 +39,7 @@ var Aufgabe6;
             alert(xhr.response);
         }
     }
-    //Funktion f�r Refresh Feld
+    //Funktion Refresh = show All Data
     function refresh(_event) {
         let xhr = new XMLHttpRequest();
         xhr.open("GET", address + "?command=refresh", true);

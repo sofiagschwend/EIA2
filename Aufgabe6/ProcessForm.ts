@@ -1,8 +1,6 @@
-namespace Aufgabe6 {
-    
- 
+namespace Aufgabe6 { 
     window.addEventListener("load", init);
-    let address: string = "https://eia2node-franziheiss.herokuapp.com";
+    let address: string = "https://eia2node-sofiagschwend.herokuapp.com";
 
     let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
 
@@ -18,10 +16,8 @@ namespace Aufgabe6 {
         searchButton.addEventListener("click", search);
     }
 
-    
-    //Funktionen zur Antwortaufbereitung
-    
-    //Funktion für die Eingabe und Übergabe der Daten
+ 
+    // Input und Send Data
     function insert(_event: Event): void {
         let genderButton: HTMLInputElement = <HTMLInputElement>document.getElementById("male");
         let matrikel: string = inputs[2].value;
@@ -32,20 +28,15 @@ namespace Aufgabe6 {
             matrikel: parseInt(matrikel),
             age: parseInt(inputs[3].value),
             gender: genderButton.checked,
-            studyPath: document.getElementsByTagName("select").item(0).value
-            
+            studyPath: document.getElementsByTagName("select").item(0).value            
         };
-        let convert: string = JSON.stringify(studi);
-        // JavaScript-JSON-Objekt wird in einen string umgewandelt
+        
+        let convert: string = JSON.stringify(studi);    // JavaScript-JSON-Objekt wird in einen string umgewandelt
         console.log(convert);
 
         let xhr: XMLHttpRequest = new XMLHttpRequest();
-        xhr.open("GET", address + "?command=insert&data=" + convert, true);
-        // "GET": Methode, mit der Daten versendet werden
-        // address: Internetaddresse vom Datentyp string (zuvor in einer Varaible gespeichert)
-        // ?command=insert&data=: wird an die Internetaddresse angehängt
-        // convert: an die Internetaddresse werden die Daten aus dem Interface als string angehängt
-        // true: Asynchronous, zu einem späteren Zeitpunkt kann festgestellt werden, welche Antwort zu welcher Anfrage gehört
+        xhr.open("GET", address + "?command=insert&data=" + convert, true);        // "GET": Methode, mit der Daten versendet werden /adresse von stringify /?command=insert&data=: wird an die Internetaddresse angehängt
+        // convert: URL + Daten aus Interface als string /true: Asynchronous, Browser wartet nicht auf Antwort -> später kann Antwort zu Anfrage zugeordnet werden
         xhr.addEventListener("readystatechange", handleStateChangeInsert);
         xhr.send();
     }
@@ -57,7 +48,7 @@ namespace Aufgabe6 {
         }
     }
 
-    //Funktion für Refresh Feld
+    //Funktion Refresh = show All Data
     function refresh(_event: Event): void {
         let xhr: XMLHttpRequest = new XMLHttpRequest();
         xhr.open("GET", address + "?command=refresh", true);

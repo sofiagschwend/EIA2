@@ -1,20 +1,17 @@
 namespace Aufgabe6 {
-    
- 
-    
-    // Struktur des heterogenen assoziativen Arrays als Datensatz für eine studierende Person
+    // Struktur des heterogenen assoziativen Arrays als Datensatz fÃ¼r eine studierende Person
     export interface Studi {
         firstname: string;
         name: string;       
         matrikel: number;
         age: number;
         gender: boolean;
-        studyPath: string;
+        studyPath: string; //Studiengang
        
     }
 
     // Struktur des homogenen assoziativen Arrays, bei dem ein Datensatz der Matrikelnummer zugeordnet ist
-    export interface Studis {
+    export interface Studis { // homogenes assoziatives Array
         [matrikel: string]: Studi;
     }
  
