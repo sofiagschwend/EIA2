@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway');
 * {
 	display: block;
-	vertical-align: top;
-	font-family: 'Raleway', Arial;
+	vertical-align: top
 }
 
 head {

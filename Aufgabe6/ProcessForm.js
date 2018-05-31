@@ -1,15 +1,7 @@
-/*   Aufgabe: Aufgabe 4 - �bung
-      Name: Sofia Gschwend
-      Matrikel: 257664
-      Datum: 02.05.18
-    
-      Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
-      Dieser Code wurde zusammen mit Franziska Hei� und Alena Hurst erarbeitet.
-*/
 var Aufgabe6;
 (function (Aufgabe6) {
     window.addEventListener("load", init);
-    let address = "https://eia2node-sofiagschwend.herokuapp.com";
+    let address = "https://eia2node-franziheiss.herokuapp.com";
     let inputs = document.getElementsByTagName("input");
     function init(_event) {
         console.log("Init");
@@ -20,22 +12,30 @@ var Aufgabe6;
         refreshButton.addEventListener("click", refresh);
         searchButton.addEventListener("click", search);
     }
+    //Funktionen zur Antwortaufbereitung
+    //Funktion f�r die Eingabe und �bergabe der Daten
     function insert(_event) {
         let genderButton = document.getElementById("male");
         let matrikel = inputs[2].value;
         let studi;
         studi = {
-            name: inputs[0].value,
-            firstname: inputs[1].value,
-            studyPath: document.getElementsByTagName("select").item(0).value,
+            firstname: inputs[0].value,
+            name: inputs[1].value,
             matrikel: parseInt(matrikel),
-            age: parseInt(inputs[4].value),
-            gender: genderButton.checked
+            age: parseInt(inputs[3].value),
+            gender: genderButton.checked,
+            studyPath: document.getElementsByTagName("select").item(0).value
         };
         let convert = JSON.stringify(studi);
+        // JavaScript-JSON-Objekt wird in einen string umgewandelt
         console.log(convert);
         let xhr = new XMLHttpRequest();
         xhr.open("GET", address + "?command=insert&data=" + convert, true);
+        // "GET": Methode, mit der Daten versendet werden
+        // address: Internetaddresse vom Datentyp string (zuvor in einer Varaible gespeichert)
+        // ?command=insert&data=: wird an die Internetaddresse angeh�ngt
+        // convert: an die Internetaddresse werden die Daten aus dem Interface als string angeh�ngt
+        // true: Asynchronous, zu einem sp�teren Zeitpunkt kann festgestellt werden, welche Antwort zu welcher Anfrage geh�rt
         xhr.addEventListener("readystatechange", handleStateChangeInsert);
         xhr.send();
     }
@@ -45,6 +45,7 @@ var Aufgabe6;
             alert(xhr.response);
         }
     }
+    //Funktion f�r Refresh Feld
     function refresh(_event) {
         let xhr = new XMLHttpRequest();
         xhr.open("GET", address + "?command=refresh", true);
@@ -59,6 +60,7 @@ var Aufgabe6;
             output.value += xhr.response;
         }
     }
+    //Funktion f�r die Suche per Matrikelnummer   
     function search(_event) {
         let mtrkl = inputs[6].value;
         let xhr = new XMLHttpRequest();

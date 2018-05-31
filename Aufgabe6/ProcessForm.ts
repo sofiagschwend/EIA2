@@ -1,15 +1,8 @@
-
-/*   Aufgabe: Aufgabe 4 - Übung
-      Name: Sofia Gschwend
-      Matrikel: 257664
-      Datum: 02.05.18
-    
-      Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
-      Dieser Code wurde zusammen mit Franziska Heiß und Alena Hurst erarbeitet.
-*/
 namespace Aufgabe6 {
+    
+ 
     window.addEventListener("load", init);
-    let address: string = "https://eia2node-sofiagschwend.herokuapp.com";
+    let address: string = "https://eia2node-franziheiss.herokuapp.com";
 
     let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
 
@@ -19,28 +12,40 @@ namespace Aufgabe6 {
         let insertButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insert");
         let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
         let searchButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("checkSearch");
+        
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
         searchButton.addEventListener("click", search);
     }
 
+    
+    //Funktionen zur Antwortaufbereitung
+    
+    //Funktion für die Eingabe und Übergabe der Daten
     function insert(_event: Event): void {
         let genderButton: HTMLInputElement = <HTMLInputElement>document.getElementById("male");
         let matrikel: string = inputs[2].value;
         let studi: Studi;
         studi = {
-            name: inputs[0].value,
-            firstname: inputs[1].value,
-            studyPath: document.getElementsByTagName("select").item(0).value,
+            firstname: inputs[0].value,
+            name: inputs[1].value,           
             matrikel: parseInt(matrikel),
-            age: parseInt(inputs[4].value),
-            gender: genderButton.checked
+            age: parseInt(inputs[3].value),
+            gender: genderButton.checked,
+            studyPath: document.getElementsByTagName("select").item(0).value
+            
         };
         let convert: string = JSON.stringify(studi);
+        // JavaScript-JSON-Objekt wird in einen string umgewandelt
         console.log(convert);
 
         let xhr: XMLHttpRequest = new XMLHttpRequest();
         xhr.open("GET", address + "?command=insert&data=" + convert, true);
+        // "GET": Methode, mit der Daten versendet werden
+        // address: Internetaddresse vom Datentyp string (zuvor in einer Varaible gespeichert)
+        // ?command=insert&data=: wird an die Internetaddresse angehängt
+        // convert: an die Internetaddresse werden die Daten aus dem Interface als string angehängt
+        // true: Asynchronous, zu einem späteren Zeitpunkt kann festgestellt werden, welche Antwort zu welcher Anfrage gehört
         xhr.addEventListener("readystatechange", handleStateChangeInsert);
         xhr.send();
     }
@@ -52,7 +57,7 @@ namespace Aufgabe6 {
         }
     }
 
-
+    //Funktion für Refresh Feld
     function refresh(_event: Event): void {
         let xhr: XMLHttpRequest = new XMLHttpRequest();
         xhr.open("GET", address + "?command=refresh", true);
@@ -69,6 +74,7 @@ namespace Aufgabe6 {
         }           
     }
     
+    //Funktion für die Suche per Matrikelnummer   
     function search(_event: Event): void {
         let mtrkl: string = inputs[6].value;
         
@@ -87,6 +93,4 @@ namespace Aufgabe6 {
         }           
     }
     
-            
-
 }
