@@ -62,8 +62,8 @@ namespace Aufgabe9_Canvas {
             crc2.quadraticCurveTo(_x - 25, _y + 250, 920, 350); //(900, 400, 920, 350);
             crc2.quadraticCurveTo(_x + 15, _y + 150, 900, 250); //(940, 300, 900, 250);
             crc2.quadraticCurveTo(_x - 25, _y + 40, 925, 150); //(900, 190, 925, 150);
-            crc2.fillStyle = "green";
-            crc2.strokeStyle = "green";
+            crc2.fillStyle = "rgb(0, 128, 0)"; // green
+            crc2.strokeStyle = "rgb(0, 128, 0)";
             crc2.stroke();
             crc2.fill();
             crc2.closePath();
@@ -79,8 +79,8 @@ namespace Aufgabe9_Canvas {
             crc2.lineTo(0, 700);
             crc2.lineTo(0, 650);
             crc2.closePath();
-            crc2.fillStyle = "lightyellow"; // Füllung
-            crc2.strokeStyle = "lightyellow"; // Linienstyle
+            crc2.fillStyle = "rgb(255, 255, 224)"; // Füllung lightyellow
+            crc2.strokeStyle = "rgb(255, 255, 224)"; // Linienstyle lightyellow
             crc2.stroke();
             crc2.fill();
         }
@@ -97,8 +97,8 @@ namespace Aufgabe9_Canvas {
             // crc2.arc(150, 150, 30, 60, 3); -> wird in init aufgerufen
             crc2.arc(_x + width, _y + height, scale, 0, 3 * Math.PI);
             crc2.stroke();
-            crc2.fillStyle = "darkblue"; // Füllung
-            crc2.strokeStyle = "darkblue"; // Linienstyle
+            crc2.fillStyle = "rgb(0, 0, 139)"; // Füllung darkblue
+            crc2.strokeStyle = "rgb(0, 0, 139)"; // Linienstyle
             crc2.fill();
             }
         }
