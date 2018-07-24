@@ -35,7 +35,16 @@ var FutterNemo;
             FutterNemo.crc2.stroke();
             FutterNemo.crc2.fill();
         }
+        checkPositionNemo() {
+            // x = event.clientX;     // Get the horizontal coordinate
+            // y = event.clientY;     // Get the vertical coordinate
+            // coor = "X coords: " + x + ", Y coords: " + y;
+        }
+        ;
+        checkPositionMouse() {
+        }
+        ;
     }
-    FutterNemo.Nemo = Nemo;
+    FutterNemo.Nemo = Nemo; // class  Nemo schlie�en
 })(FutterNemo || (FutterNemo = {})); //namespace zu
 //# sourceMappingURL=Nemo.js.map

@@ -42,6 +42,27 @@ namespace FutterNemo { //neuer nc
             crc2.fill();
         }
         
-    }
+        // Check Position von Nemo
+        checkPositionNemo(): void {
+           let newPositionX: number = _event.clientX;
+           let newPositionY: number = _event.clientY;
+        };
+
+        // Check Position von MouseDown
+        checkPositionMouse(): void {
+
+        };
+        
+        // Vergleiche Position von Nemo & MouseDown
+        // *** if distance near to 5px GAME OVER -> Alert Box Gamer Over
+        // Alert Box: <button> Reload Game <button>
+        
+        /********************************************
+        TO DO
+        width und height anpassen
+        *************************************************/
+        
+
+    } // class  Nemo schlieﬂen
 
 }//namespace zu
