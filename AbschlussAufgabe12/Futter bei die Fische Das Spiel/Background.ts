@@ -6,7 +6,7 @@ namespace FutterNemo { //neuer nc
     export function environment(): void {
         // Hintergrund Einfärben
         crc2.fillStyle = "lightblue";
-        crc2.fillRect(0, 0, 640, 360);
+        crc2.fillRect(0, 0, 1000, 700);
 
         // Funktionsaufrufe - wer zuerst kommt, malt zuerst
         drawRocks(200, 550);

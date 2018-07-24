@@ -5,7 +5,7 @@ var FutterNemo;
     function environment() {
         // Hintergrund Einf�rben
         FutterNemo.crc2.fillStyle = "lightblue";
-        FutterNemo.crc2.fillRect(0, 0, 640, 360);
+        FutterNemo.crc2.fillRect(0, 0, 1000, 700);
         // Funktionsaufrufe - wer zuerst kommt, malt zuerst
         drawRocks(200, 550);
         drawRocks(350, 550);

@@ -8,7 +8,7 @@ namespace FutterNemo { //neuer nc
             this.setRandomPosition();
         }
 
-        move(): void {
+       /* move(): void {
             this.x -= 2;
             this.y += 0;
             if (this.x < -200) {
@@ -19,12 +19,12 @@ namespace FutterNemo { //neuer nc
                 this.y = crc2.canvas.height;
                 this.x -= 2;
             }
-        }
+        }*/
 
         // Fische schwimmen 'hinter' dem Futter = Bereich der über Sand liegt
         setRandomPosition(): void {
-            this.x = Math.random() * crc2.canvas.width;
-            this.y = Math.random() * crc2.canvas.height - 200;
+            this.x = Math.random() * (500 - 300) + 300;       // Math.random() * (max - min) + min
+            this.y = Math.random() * (650 - 50) + 50;
         }
 
         draw(): void {
@@ -38,6 +38,7 @@ namespace FutterNemo { //neuer nc
             crc2.stroke();
             crc2.fill();
         }
+        
     }
 
 }//namespace zu

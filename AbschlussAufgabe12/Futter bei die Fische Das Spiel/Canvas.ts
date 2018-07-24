@@ -3,12 +3,13 @@ namespace FutterNemo { //neuer nc
     window.addEventListener("load", init);
     export let crc2: CanvasRenderingContext2D;
     let superclass: Superclass[] = [];
+    export let canvas: HTMLCanvasElement;
 
     // Variable, in der das Hintergrundbild abgespeichert wird (siehe Init-Funktion)
     let imgData: ImageData;
 
     function init(_event: Event): void {
-        let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
+        canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
         console.log(crc2);
         canvas.addEventListener("click", fishFood);
@@ -17,11 +18,27 @@ namespace FutterNemo { //neuer nc
         environment();
 
         // For-Schleife, um Fische zu zeichnen        
-        for (let i: number = 0; i < 11; i++) {
+        /*for (let i: number = 0; i < 11; i++) {
+             let fish: Fish = new Fish();
+             //            fish.x = Math.random() * crc2.canvas.width;
+             //            fish.y = Math.random() * crc2.canvas.height;
+             superclass.push(fish);
+        */
+             
+        // For-Schleife, um NEMO zu zeichnen        
+        for (let i: number = 0; i < 1; i++) {
             let fish: Fish = new Fish();
             //            fish.x = Math.random() * crc2.canvas.width;
             //            fish.y = Math.random() * crc2.canvas.height;
             superclass.push(fish);
+        }
+
+        // For-Schleife, um Shark zu zeichnen
+        for (let i: number = 0; i < 7; i++) {
+            let shark: Shark = new Shark();
+            //            fish.x = Math.random() * crc2.canvas.width;
+            //            fish.y = Math.random() * crc2.canvas.height;
+            superclass.push(shark);
         }
 
         // For-Schleife für die Luftblasen
@@ -37,30 +54,12 @@ namespace FutterNemo { //neuer nc
             superclass.push(bubbles);
         }
 
-       /* let canvas = document.getElementsByTagName("canvas")[0];
-        crc2 = canvas.getContext("2d");
-        //canvas.addEventListener("click", insertFood);
-
-        //Hintergrund 
-        environment();
-        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
-
-        if (breite > hoehe) {
-            canvas.style.setProperty("height", 0.95 * hoehe + "px");
-        } else if (hoehe > breite) {
-            canvas.style.setProperty("width", 0.95 * breite + "px");
-        }
-        
-        for (let b: number = 0; b < 5; b++) {
-            let wolken: Wolke = new Wolke();
-            movingObjects.push(wolken);
-        }*/
-
         // In der Variable wird das Hintergrundbild gespeichert
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
 
         // Aufruf der Animate-Funktion
         animate();
+        // Aufruf der drawObjects funktion 
 
 
 
@@ -111,6 +110,8 @@ namespace FutterNemo { //neuer nc
             newPositionY += Math.random() * 30;
         }
     }
+
+    console.log(superclass);
 
 
 }// namespace zu

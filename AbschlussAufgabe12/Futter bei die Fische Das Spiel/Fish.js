@@ -5,22 +5,22 @@ var FutterNemo;
             super();
             this.setRandomPosition();
         }
-        move() {
-            this.x -= 2;
-            this.y += 0;
-            if (this.x < -200) {
-                this.x = FutterNemo.crc2.canvas.width;
-                this.y += 0;
-            }
-            if (this.y < 0) {
-                this.y = FutterNemo.crc2.canvas.height;
-                this.x -= 2;
-            }
-        }
+        /* move(): void {
+             this.x -= 2;
+             this.y += 0;
+             if (this.x < -200) {
+                 this.x = crc2.canvas.width;
+                 this.y += 0;
+             }
+             if (this.y < 0) {
+                 this.y = crc2.canvas.height;
+                 this.x -= 2;
+             }
+         }*/
         // Fische schwimmen 'hinter' dem Futter = Bereich der �ber Sand liegt
         setRandomPosition() {
-            this.x = Math.random() * FutterNemo.crc2.canvas.width;
-            this.y = Math.random() * FutterNemo.crc2.canvas.height - 200;
+            this.x = Math.random() * (500 - 300) + 300; // Math.random() * (max - min) + min
+            this.y = Math.random() * (650 - 50) + 50;
         }
         draw() {
             FutterNemo.crc2.beginPath();
