@@ -35,12 +35,13 @@ var FutterNemo;
             FutterNemo.crc2.stroke();
             FutterNemo.crc2.fill();
         }
+        // Check Position von Nemo
         checkPositionNemo() {
-            // x = event.clientX;     // Get the horizontal coordinate
-            // y = event.clientY;     // Get the vertical coordinate
-            // coor = "X coords: " + x + ", Y coords: " + y;
+            //let newPositionX: number = _event.clientX;
+            // let newPositionY: number = _event.clientY;
         }
         ;
+        // Check Position von MouseDown
         checkPositionMouse() {
         }
         ;

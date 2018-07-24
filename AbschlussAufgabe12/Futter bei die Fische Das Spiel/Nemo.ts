@@ -44,8 +44,8 @@ namespace FutterNemo { //neuer nc
         
         // Check Position von Nemo
         checkPositionNemo(): void {
-           let newPositionX: number = _event.clientX;
-           let newPositionY: number = _event.clientY;
+           //let newPositionX: number = _event.clientX;
+          // let newPositionY: number = _event.clientY;
         };
 
         // Check Position von MouseDown
