@@ -5,13 +5,13 @@ var FutterNemo;
     function environment() {
         // Hintergrund Einf�rben
         FutterNemo.crc2.fillStyle = "lightblue";
-        FutterNemo.crc2.fillRect(0, 0, 1000, 700);
+        FutterNemo.crc2.fillRect(0, 0, 1000, 600);
         // Funktionsaufrufe - wer zuerst kommt, malt zuerst
-        drawRocks(200, 550);
-        drawRocks(350, 550);
+        drawRocks(200, 450);
+        drawRocks(350, 450);
         drawGrass(925, 150);
         drawSand();
-        drawBox(620, 600);
+        drawBox(620, 500);
     }
     FutterNemo.environment = environment;
     // FELSEN
@@ -49,12 +49,12 @@ var FutterNemo;
     // SAND 
     function drawSand() {
         FutterNemo.crc2.beginPath();
-        FutterNemo.crc2.moveTo(0, 650);
-        FutterNemo.crc2.quadraticCurveTo(350, 500, 500, 600);
-        FutterNemo.crc2.quadraticCurveTo(800, 500, 1000, 400);
-        FutterNemo.crc2.lineTo(1000, 700);
-        FutterNemo.crc2.lineTo(0, 700);
-        FutterNemo.crc2.lineTo(0, 650);
+        FutterNemo.crc2.moveTo(0, 550);
+        FutterNemo.crc2.quadraticCurveTo(350, 400, 500, 500);
+        FutterNemo.crc2.quadraticCurveTo(800, 400, 1000, 300);
+        FutterNemo.crc2.lineTo(1000, 600);
+        FutterNemo.crc2.lineTo(0, 600);
+        FutterNemo.crc2.lineTo(0, 550);
         FutterNemo.crc2.closePath();
         FutterNemo.crc2.fillStyle = "rgb(255, 255, 224)"; // F�llung lightyellow
         FutterNemo.crc2.strokeStyle = "rgb(255, 255, 224)"; // Linienstyle lightyellow

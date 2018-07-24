@@ -6,14 +6,14 @@ namespace FutterNemo { //neuer nc
     export function environment(): void {
         // Hintergrund Einfärben
         crc2.fillStyle = "lightblue";
-        crc2.fillRect(0, 0, 1000, 700);
+        crc2.fillRect(0, 0, 1000, 600);
 
         // Funktionsaufrufe - wer zuerst kommt, malt zuerst
-        drawRocks(200, 550);
-        drawRocks(350, 550);
+        drawRocks(200, 450);
+        drawRocks(350, 450);
         drawGrass(925, 150);
         drawSand();
-        drawBox(620, 600);
+        drawBox(620, 500);
     }
     
     // FELSEN
@@ -53,12 +53,12 @@ namespace FutterNemo { //neuer nc
     // SAND 
     function drawSand(): void {
         crc2.beginPath();
-        crc2.moveTo(0, 650);
-        crc2.quadraticCurveTo(350, 500, 500, 600);
-        crc2.quadraticCurveTo(800, 500, 1000, 400);
-        crc2.lineTo(1000, 700);
-        crc2.lineTo(0, 700);
-        crc2.lineTo(0, 650);
+        crc2.moveTo(0, 550);
+        crc2.quadraticCurveTo(350, 400, 500, 500);
+        crc2.quadraticCurveTo(800, 400, 1000, 300);
+        crc2.lineTo(1000, 600);
+        crc2.lineTo(0, 600);
+        crc2.lineTo(0, 550);
         crc2.closePath();
         crc2.fillStyle = "rgb(255, 255, 224)"; // Füllung lightyellow
         crc2.strokeStyle = "rgb(255, 255, 224)"; // Linienstyle lightyellow

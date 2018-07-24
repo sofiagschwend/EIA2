@@ -59,7 +59,7 @@ namespace FutterNemo { //neuer nc
         
         /********************************************
         TO DO
-        width und height anpassen
+        width und height anpassen von Blasen
         *************************************************/
         
 
