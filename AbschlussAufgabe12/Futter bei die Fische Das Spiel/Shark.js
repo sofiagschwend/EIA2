@@ -6,16 +6,14 @@ var FutterNemo;
             this.setRandomPosition();
         }
         move() {
-            this.x += 2;
-            this.y += 0;
             if (this.x > FutterNemo.canvas.width) {
-                this.x = -80;
-                this.y += Math.random() * FutterNemo.crc2.canvas.height - 10;
+                this.x = -80; // beginne auf x Achse vor Bildschirm
+                this.y += Math.random() * ((FutterNemo.crc2.canvas.height - 10) - 0) + 1; // Math.random() * (max - min) + min
             }
-            /*if (this.y < 0) {
-                this.y = crc2.canvas.height;
-                this.x += 2;
-            }*/
+            else {
+                this.x += 2; // Geschwindigkeit um 2px nach rechts ist +x
+            }
+            ;
         }
         setRandomPosition() {
             this.x = Math.random() * FutterNemo.crc2.canvas.width;

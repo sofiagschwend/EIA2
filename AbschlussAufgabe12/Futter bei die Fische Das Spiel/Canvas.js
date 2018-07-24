@@ -8,29 +8,15 @@ var FutterNemo;
         FutterNemo.canvas = document.getElementsByTagName("canvas")[0];
         FutterNemo.crc2 = FutterNemo.canvas.getContext("2d");
         console.log(FutterNemo.crc2);
-        FutterNemo.canvas.addEventListener("click", fishFood);
+        FutterNemo.canvas.addEventListener("click", moveNemo);
         // Aufruf der Funktion "environment" - Aufruf der Funktionen, die den Hintergrund malen
         FutterNemo.environment();
-        /**********************
-        // For-Schleife, um Fische zu zeichnen
-        for (let i: number = 0; i < 11; i++) {
-             let fish: Fish = new Fish();
-             //            fish.x = Math.random() * crc2.canvas.width;
-             //            fish.y = Math.random() * crc2.canvas.height;
-             superclass.push(fish);
-        ************************/
-        // For-Schleife, um NEMO zu zeichnen        
-        for (let i = 0; i < 1; i++) {
-            let nemo = new FutterNemo.Nemo();
-            //            nemo.x = Math.random() * crc2.canvas.width;
-            //            nemo.y = Math.random() * crc2.canvas.height;
-            superclass.push(nemo);
-        }
+        // 1 NEMO erstellen aus KLasse Nemo und wird in Array nemo gepusht = Objekt        
+        FutterNemo.nemo = new FutterNemo.Nemo(); // oben als nemo von Nemo festgelegt und sichtbar durch export
+        superclass.push(FutterNemo.nemo);
         // For-Schleife, um Shark zu zeichnen
         for (let i = 0; i < 7; i++) {
             let shark = new FutterNemo.Shark();
-            //            fish.x = Math.random() * crc2.canvas.width;
-            //            fish.y = Math.random() * crc2.canvas.height;
             superclass.push(shark);
         }
         // For-Schleife f�r die Luftblasen
@@ -73,15 +59,15 @@ var FutterNemo;
             superclass[i].draw();
         }
     }
-    function fishFood(_event) {
-        let newPositionX = _event.clientX;
-        let newPositionY = _event.clientY;
-        for (let i = 0; i < 4; i++) {
-            let flakes = new FutterNemo.Flake(newPositionX, newPositionY);
-            superclass.push(flakes);
-            newPositionX += Math.random() * 60;
-            newPositionX -= Math.random() * 60;
-            newPositionY += Math.random() * 30;
+    // click Event abgreifen f�r Nemo move
+    function moveNemo(_event) {
+        let clickPositionX = _event.clientX; // clientX ist Werte WO geklickt wurde
+        let clickPositionY = _event.clientY;
+        if (clickPositionY <= FutterNemo.nemo.y) {
+            FutterNemo.nemo.y -= 10;
+        }
+        else {
+            FutterNemo.nemo.y += 10;
         }
     }
     console.log(superclass);

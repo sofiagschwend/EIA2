@@ -40,11 +40,9 @@ var FutterNemo;
             //let newPositionX: number = _event.clientX;
             // let newPositionY: number = _event.clientY;
         }
-        ;
-        // Check Position von MouseDown
-        checkPositionMouse() {
+        // Check Position von Shark
+        checkPositionShark() {
         }
-        ;
     }
     FutterNemo.Nemo = Nemo; // class  Nemo schlie�en
 })(FutterNemo || (FutterNemo = {})); //namespace zu

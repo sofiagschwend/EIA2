@@ -1,6 +1,7 @@
 namespace FutterNemo { //neuer nc
     
     export class Nemo extends Superclass {
+        direction: number;
         
         
         constructor() {
@@ -46,14 +47,17 @@ namespace FutterNemo { //neuer nc
         checkPositionNemo(): void {
            //let newPositionX: number = _event.clientX;
           // let newPositionY: number = _event.clientY;
-        };
+        }
 
-        // Check Position von MouseDown
-        checkPositionMouse(): void {
+        // Check Position von Shark
+        checkPositionShark(): void {
 
-        };
+        }
         
         // Vergleiche Position von Nemo & MouseDown
+        // move Nemo hoch runter
+        
+        // Vergleiche POsition Nemo & Shark
         // *** if distance near to 5px GAME OVER -> Alert Box Gamer Over
         // Alert Box: <button> Reload Game <button>
         

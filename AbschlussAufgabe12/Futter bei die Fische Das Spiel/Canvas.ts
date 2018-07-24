@@ -4,6 +4,8 @@ namespace FutterNemo { //neuer nc
     export let crc2: CanvasRenderingContext2D;
     let superclass: Superclass[] = [];
     export let canvas: HTMLCanvasElement;
+    export let nemo: Nemo; // muss sichtbar sein für moveNemo
+
 
     // Variable, in der das Hintergrundbild abgespeichert wird (siehe Init-Funktion)
     let imgData: ImageData;
@@ -12,33 +14,20 @@ namespace FutterNemo { //neuer nc
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
         console.log(crc2);
-        canvas.addEventListener("click", fishFood);
+        canvas.addEventListener("click", moveNemo);
 
         // Aufruf der Funktion "environment" - Aufruf der Funktionen, die den Hintergrund malen
         environment();
 
-        /**********************
-        // For-Schleife, um Fische zu zeichnen        
-        for (let i: number = 0; i < 11; i++) {
-             let fish: Fish = new Fish();
-             //            fish.x = Math.random() * crc2.canvas.width;
-             //            fish.y = Math.random() * crc2.canvas.height;
-             superclass.push(fish);
-        ************************/
-             
-        // For-Schleife, um NEMO zu zeichnen        
-        for (let i: number = 0; i < 1; i++) {
-            let nemo: Nemo = new Nemo();
-            //            nemo.x = Math.random() * crc2.canvas.width;
-            //            nemo.y = Math.random() * crc2.canvas.height;
-            superclass.push(nemo);
-        }
+        
+        // 1 NEMO erstellen aus KLasse Nemo und wird in Array nemo gepusht = Objekt        
+        nemo = new Nemo(); // oben als nemo von Nemo festgelegt und sichtbar durch export
+        superclass.push(nemo);
+
 
         // For-Schleife, um Shark zu zeichnen
         for (let i: number = 0; i < 7; i++) {
             let shark: Shark = new Shark();
-            //            fish.x = Math.random() * crc2.canvas.width;
-            //            fish.y = Math.random() * crc2.canvas.height;
             superclass.push(shark);
         }
 
@@ -94,21 +83,21 @@ namespace FutterNemo { //neuer nc
         }
     }
 
-    function fishFood(_event: MouseEvent): void {
 
-        let newPositionX: number = _event.clientX;
-        let newPositionY: number = _event.clientY;
+    // click Event abgreifen für Nemo move
+    function moveNemo(_event: MouseEvent): void {
 
+        let clickPositionX: number = _event.clientX; // clientX ist Werte WO geklickt wurde
+        let clickPositionY: number = _event.clientY;
 
-        for (let i: number = 0; i < 4; i++) {
-            let flakes: Flake = new Flake(newPositionX, newPositionY);
-            superclass.push(flakes);
-            newPositionX += Math.random() * 60;
-            newPositionX -= Math.random() * 60;
-            newPositionY += Math.random() * 30;
+        if (clickPositionY <= nemo.y) { // falls click ÜBER Nemo
+            nemo.y -= 10;
+        } else { // alles andere an clicks move down (click UNTER Nemo)
+            nemo.y += 10;
         }
-    }
 
+    }
+    
     console.log(superclass);
 
 

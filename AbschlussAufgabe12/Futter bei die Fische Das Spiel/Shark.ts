@@ -8,17 +8,13 @@ namespace FutterNemo { //neuer nc
             this.setRandomPosition();
         }
 
-        move(): void {
-            this.x += 2;
-            this.y += 0;
+        move(): void {  // Shark bist du auserhalb der width, dann setzte neuen x & y Wert
             if (this.x > canvas.width) {
-                this.x = -80;
-                this.y += Math.random() * crc2.canvas.height - 10;
-            }
-            /*if (this.y < 0) {
-                this.y = crc2.canvas.height;
-                this.x += 2;
-            }*/
+                this.x = -80; // beginne auf x Achse vor Bildschirm
+                this.y += Math.random() * ((crc2.canvas.height - 10) - 0) + 1; // Math.random() * (max - min) + min
+            } else {
+                this.x += 2;  // Geschwindigkeit um 2px nach rechts ist +x
+            };
         }
 
         setRandomPosition(): void {
