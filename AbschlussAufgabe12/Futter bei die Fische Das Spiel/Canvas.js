@@ -11,19 +11,20 @@ var FutterNemo;
         FutterNemo.canvas.addEventListener("click", fishFood);
         // Aufruf der Funktion "environment" - Aufruf der Funktionen, die den Hintergrund malen
         FutterNemo.environment();
-        // For-Schleife, um Fische zu zeichnen        
-        /*for (let i: number = 0; i < 11; i++) {
+        /**********************
+        // For-Schleife, um Fische zu zeichnen
+        for (let i: number = 0; i < 11; i++) {
              let fish: Fish = new Fish();
              //            fish.x = Math.random() * crc2.canvas.width;
              //            fish.y = Math.random() * crc2.canvas.height;
              superclass.push(fish);
-        */
+        ************************/
         // For-Schleife, um NEMO zu zeichnen        
         for (let i = 0; i < 1; i++) {
-            let fish = new FutterNemo.Fish();
-            //            fish.x = Math.random() * crc2.canvas.width;
-            //            fish.y = Math.random() * crc2.canvas.height;
-            superclass.push(fish);
+            let nemo = new FutterNemo.Nemo();
+            //            nemo.x = Math.random() * crc2.canvas.width;
+            //            nemo.y = Math.random() * crc2.canvas.height;
+            superclass.push(nemo);
         }
         // For-Schleife, um Shark zu zeichnen
         for (let i = 0; i < 7; i++) {
@@ -47,7 +48,6 @@ var FutterNemo;
         imgData = FutterNemo.crc2.getImageData(0, 0, FutterNemo.canvas.width, FutterNemo.canvas.height);
         // Aufruf der Animate-Funktion
         animate();
-        // Aufruf der drawObjects funktion 
     } // init funktion zu ***********************************************
     // Animtions-Funktion - setzt TimeOut
     function animate() {

@@ -21,7 +21,6 @@ namespace FutterNemo { //neuer nc
             }*/
         }
 
-        // Fische schwimmen 'hinter' dem Futter = Bereich der über Sand liegt
         setRandomPosition(): void {
             this.x = Math.random() * crc2.canvas.width;
             this.y = Math.random() * crc2.canvas.height - 200;
@@ -48,6 +47,6 @@ namespace FutterNemo { //neuer nc
             crc2.stroke();
             crc2.fill();
         }
-    }
+    }// class Shark zu
 
 }//namespace zu

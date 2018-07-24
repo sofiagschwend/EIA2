@@ -10,7 +10,7 @@ export class Flake extends Superclass {
             this.x = newPositionX;
             this.y = newPositionY;
             this.radius = 4;  
-            this.stop = Math.random() * (690 - 640) + 640; // Bereich in dem Futter liegt
+            this.stop = Math.random() * (690 - 640) + 640; // Bereich in dem Futter liegt | Math.random() * (max - min) + min
         }
 
         move(): void {

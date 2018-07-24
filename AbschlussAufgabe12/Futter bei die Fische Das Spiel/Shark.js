@@ -17,7 +17,6 @@ var FutterNemo;
                 this.x += 2;
             }*/
         }
-        // Fische schwimmen 'hinter' dem Futter = Bereich der �ber Sand liegt
         setRandomPosition() {
             this.x = Math.random() * FutterNemo.crc2.canvas.width;
             this.y = Math.random() * FutterNemo.crc2.canvas.height - 200;
@@ -43,6 +42,6 @@ var FutterNemo;
             FutterNemo.crc2.fill();
         }
     }
-    FutterNemo.Shark = Shark;
+    FutterNemo.Shark = Shark; // class Shark zu
 })(FutterNemo || (FutterNemo = {})); //namespace zu
 //# sourceMappingURL=Shark.js.map

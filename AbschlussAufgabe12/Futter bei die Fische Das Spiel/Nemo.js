@@ -1,10 +1,11 @@
 var FutterNemo;
 (function (FutterNemo) {
-    class Fish extends FutterNemo.Superclass {
+    class Nemo extends FutterNemo.Superclass {
         constructor() {
             super();
             this.setRandomPosition();
         }
+        // funktion um Nemo nach oben / unten zu bewegen durch Mausklick in positionNemo < Bereich / positionNemo  Bereich
         /* move(): void {
              this.x -= 2;
              this.y += 0;
@@ -17,11 +18,12 @@ var FutterNemo;
                  this.x -= 2;
              }
          }*/
-        // Fische schwimmen 'hinter' dem Futter = Bereich der �ber Sand liegt
+        // Bereich in der Sich Nemo auf halten darf
         setRandomPosition() {
             this.x = Math.random() * (500 - 300) + 300; // Math.random() * (max - min) + min
             this.y = Math.random() * (650 - 50) + 50;
         }
+        // Nemo zeichnen in orange
         draw() {
             FutterNemo.crc2.beginPath();
             FutterNemo.crc2.moveTo(this.x, this.y);
@@ -34,6 +36,6 @@ var FutterNemo;
             FutterNemo.crc2.fill();
         }
     }
-    FutterNemo.Fish = Fish;
+    FutterNemo.Nemo = Nemo;
 })(FutterNemo || (FutterNemo = {})); //namespace zu
-//# sourceMappingURL=Fish.js.map
+//# sourceMappingURL=Nemo.js.map

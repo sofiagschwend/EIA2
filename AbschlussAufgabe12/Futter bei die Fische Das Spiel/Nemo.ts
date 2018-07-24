@@ -1,12 +1,14 @@
 namespace FutterNemo { //neuer nc
     
-    export class Fish extends Superclass {
+    export class Nemo extends Superclass {
         
         
         constructor() {
             super();
             this.setRandomPosition();
         }
+        
+        // funktion um Nemo nach oben / unten zu bewegen durch Mausklick in positionNemo < Bereich / positionNemo  Bereich
 
        /* move(): void {
             this.x -= 2;
@@ -21,12 +23,13 @@ namespace FutterNemo { //neuer nc
             }
         }*/
 
-        // Fische schwimmen 'hinter' dem Futter = Bereich der über Sand liegt
+        // Bereich in der Sich Nemo auf halten darf
         setRandomPosition(): void {
             this.x = Math.random() * (500 - 300) + 300;       // Math.random() * (max - min) + min
             this.y = Math.random() * (650 - 50) + 50;
         }
 
+        // Nemo zeichnen in orange
         draw(): void {
             crc2.beginPath();
             crc2.moveTo(this.x, this.y);

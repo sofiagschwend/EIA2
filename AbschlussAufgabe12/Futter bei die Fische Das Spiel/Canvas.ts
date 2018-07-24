@@ -17,20 +17,21 @@ namespace FutterNemo { //neuer nc
         // Aufruf der Funktion "environment" - Aufruf der Funktionen, die den Hintergrund malen
         environment();
 
+        /**********************
         // For-Schleife, um Fische zu zeichnen        
-        /*for (let i: number = 0; i < 11; i++) {
+        for (let i: number = 0; i < 11; i++) {
              let fish: Fish = new Fish();
              //            fish.x = Math.random() * crc2.canvas.width;
              //            fish.y = Math.random() * crc2.canvas.height;
              superclass.push(fish);
-        */
+        ************************/
              
         // For-Schleife, um NEMO zu zeichnen        
         for (let i: number = 0; i < 1; i++) {
-            let fish: Fish = new Fish();
-            //            fish.x = Math.random() * crc2.canvas.width;
-            //            fish.y = Math.random() * crc2.canvas.height;
-            superclass.push(fish);
+            let nemo: Nemo = new Nemo();
+            //            nemo.x = Math.random() * crc2.canvas.width;
+            //            nemo.y = Math.random() * crc2.canvas.height;
+            superclass.push(nemo);
         }
 
         // For-Schleife, um Shark zu zeichnen
@@ -59,9 +60,6 @@ namespace FutterNemo { //neuer nc
 
         // Aufruf der Animate-Funktion
         animate();
-        // Aufruf der drawObjects funktion 
-
-
 
     }// init funktion zu ***********************************************
 
