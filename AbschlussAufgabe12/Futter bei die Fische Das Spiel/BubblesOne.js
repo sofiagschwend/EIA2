@@ -7,7 +7,7 @@ var FutterNemo;
             this.setRandomPosition();
         }
         setRandomPosition() {
-            this.x = Math.random() * (730 - 760) + 760; // Math.random() * (max - min) + min      
+            this.x = Math.random() * (850 - 880) + 880; // Math.random() * (max - min) + min      
             this.y = Math.random() * 450;
             this.scale = Math.random() * 10;
         }

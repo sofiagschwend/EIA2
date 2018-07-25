@@ -6,25 +6,25 @@ namespace FutterNemo { //neuer nc
         constructor() {
             super();
             this.setRandomPosition();
+            //this.checkPositionShark(); // bei jedem erstellen des SHarks Position checken
         }
 
         move(): void {  // Shark bist du auserhalb der width, dann setzte neuen x & y Wert
             if (this.x > canvas.width) {
                 this.x = -100; // beginne auf x Achse vor Bildschirm
-                
+
                 if (this.y < canvas.height - 570) {
                     this.setRandomPositionY();
 
                 } else if (this.y > canvas.height - 30) {
                     this.setRandomPositionY();
-                };
-                
-                console.log(this.y);
-                
+                }
+
+                //  console.log(this.y);  
             } else {
                 this.x += 2;  // Geschwindigkeit um 2px nach rechts ist +x
-            };
-            console.log("Move");
+            }
+            // console.log("Move");
         }
 
         // Random Sharks anzeigen
@@ -39,6 +39,16 @@ namespace FutterNemo { //neuer nc
         };
 
 
+        // funktion um Shark Position auszulesen X und Y einzeln, weil return nur 1 Wert zurückgibt
+        checkPositionShark() {
+            let PositionX = this.x;
+            let PositionY = this.y;
+            let sharkFinalPosition = PositionX + PositionY;
+            
+            return sharkFinalPosition // ist zusammengezählte Zahl in Canvas.ts als positionShark
+        };
+
+       
         draw(): void {
             crc2.beginPath();
             crc2.moveTo(this.x + 30, this.y + 40); // x=30, y=40

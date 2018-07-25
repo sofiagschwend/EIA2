@@ -4,6 +4,7 @@ var FutterNemo;
         constructor() {
             super();
             this.setRandomPosition();
+            //this.checkPositionShark(); // bei jedem erstellen des SHarks Position checken
         }
         move() {
             if (this.x > FutterNemo.canvas.width) {
@@ -14,14 +15,11 @@ var FutterNemo;
                 else if (this.y > FutterNemo.canvas.height - 30) {
                     this.setRandomPositionY();
                 }
-                ;
-                console.log(this.y);
             }
             else {
                 this.x += 2; // Geschwindigkeit um 2px nach rechts ist +x
             }
-            ;
-            console.log("Move");
+            // console.log("Move");
         }
         // Random Sharks anzeigen
         setRandomPosition() {
@@ -32,6 +30,14 @@ var FutterNemo;
         // Sharks in Sichtfeld anzeigen
         setRandomPositionY() {
             this.y = Math.random() * FutterNemo.crc2.canvas.height - 200;
+        }
+        ;
+        // funktion um Shark Position auszulesen X und Y einzeln, weil return nur 1 Wert zur�ckgibt
+        checkPositionShark() {
+            let PositionX = this.x;
+            let PositionY = this.y;
+            let sharkFinalPosition = PositionX + PositionY;
+            return sharkFinalPosition; // ist zusammengez�hlte Zahl in Canvas.ts als positionShark
         }
         ;
         draw() {

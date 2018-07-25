@@ -3,8 +3,11 @@ var FutterNemo;
     // ALLES WAS ENVIRONMENT AUSMACHT UND STATISCH IST
     // Funktion, um den Hintergrund zu zeichnen
     function environment() {
+        let gradient = FutterNemo.crc2.createLinearGradient(0, 0, 0, 500);
         // Hintergrund Einf�rben
-        FutterNemo.crc2.fillStyle = "lightblue";
+        gradient.addColorStop(0, "#a1beea");
+        gradient.addColorStop(1, "#62d1c9");
+        FutterNemo.crc2.fillStyle = gradient;
         FutterNemo.crc2.fillRect(0, 0, 1000, 600);
         // Funktionsaufrufe - wer zuerst kommt, malt zuerst
         drawRocks(350, 460);
@@ -70,8 +73,8 @@ var FutterNemo;
         FutterNemo.crc2.lineTo(_x + 200, _y - 100);
         FutterNemo.crc2.lineTo(_x, _y - 100);
         FutterNemo.crc2.closePath();
-        FutterNemo.crc2.fillStyle = "brown";
-        FutterNemo.crc2.strokeStyle = "white";
+        FutterNemo.crc2.fillStyle = "#752323";
+        FutterNemo.crc2.strokeStyle = "#752323";
         FutterNemo.crc2.stroke();
         FutterNemo.crc2.fill();
         FutterNemo.crc2.beginPath(); //Deckel von der Seite
@@ -79,8 +82,8 @@ var FutterNemo;
         FutterNemo.crc2.lineTo(_x + 190, _y - 150);
         FutterNemo.crc2.quadraticCurveTo(_x + 70, _y - 190, _x, _y - 100);
         FutterNemo.crc2.closePath();
-        FutterNemo.crc2.fillStyle = "brown";
-        FutterNemo.crc2.strokeStyle = "brown";
+        FutterNemo.crc2.fillStyle = "#752323";
+        FutterNemo.crc2.strokeStyle = "#752323";
         FutterNemo.crc2.stroke();
         FutterNemo.crc2.fill();
     }

@@ -5,20 +5,7 @@ var FutterNemo;
             super();
             this.setRandomPosition();
         }
-        // funktion um Nemo nach oben / unten zu bewegen durch Mausklick in positionNemo < Bereich / positionNemo  Bereich
-        /* move(): void {
-             this.x -= 2;
-             this.y += 0;
-             if (this.x < -200) {
-                 this.x = crc2.canvas.width;
-                 this.y += 0;
-             }
-             if (this.y < 0) {
-                 this.y = crc2.canvas.height;
-                 this.x -= 2;
-             }
-         }*/
-        // Bereich in der Sich Nemo auf halten darf
+        // Bereich in der Sich Nemo aufhalten darf
         setRandomPosition() {
             this.x = Math.random() * (800 - 600) + 600; // Math.random() * (max - min) + min
             this.y = Math.random() * (550 - 50) + 50;
@@ -35,13 +22,15 @@ var FutterNemo;
             FutterNemo.crc2.stroke();
             FutterNemo.crc2.fill();
         }
-        // Check Position von Nemo
-        checkPositionNemo() {
-            //let newPositionX: number = _event.clientX;
-            // let newPositionY: number = _event.clientY;
-        }
-        // Check Position von Shark
-        checkPositionShark() {
+        // move Nemo nach Mausklick
+        moveNemo(_clickPositionY) {
+            console.log(_clickPositionY);
+            if (_clickPositionY <= this.y) {
+                this.y -= 15;
+            }
+            else {
+                this.y += 15;
+            }
         }
     }
     FutterNemo.Nemo = Nemo; // class  Nemo schlie�en

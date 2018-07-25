@@ -2,13 +2,14 @@ var FutterNemo;
 (function (FutterNemo) {
     window.addEventListener("load", init);
     let superclass = [];
+    let sharksPositions = []; // Position jedes Sharks abspeichern
     // Variable, in der das Hintergrundbild abgespeichert wird (siehe Init-Funktion)
     let imgData;
     function init(_event) {
         FutterNemo.canvas = document.getElementsByTagName("canvas")[0];
         FutterNemo.crc2 = FutterNemo.canvas.getContext("2d");
         console.log(FutterNemo.crc2);
-        FutterNemo.canvas.addEventListener("click", moveNemo);
+        FutterNemo.canvas.addEventListener("click", checkPositionNemo);
         // Aufruf der Funktion "environment" - Aufruf der Funktionen, die den Hintergrund malen
         FutterNemo.environment();
         // 1 NEMO erstellen aus KLasse Nemo und wird in Array nemo gepusht = Objekt        
@@ -59,17 +60,44 @@ var FutterNemo;
             superclass[i].draw();
         }
     }
+    // Position Shark ermittlen und in einer Variablen let positionShark speichern
+    function checkShark() {
+        sharksPositions.length = 0; // Array leeren, damit nur aktuelle Sharks 
+        for (let i = 1; i < 8; i++) {
+            let shark = superclass[i];
+            let positionShark = shark.checkPositionShark();
+            //            console.log("positionShark" + posit            
+            sharksPositions.push(positionShark); // Array das Position jedes Sharks abspeichern
+        }
+        return sharksPositions; // Ganzes Array aus checkShark rausholen und sichtbar machen f�r Canvas.ts
+    }
+    // funktion um Nemo nach oben/unten zu bewegen durch Mausklick in positionNemo < Bereich / positionNemo > Bereich
     // click Event abgreifen f�r Nemo move
-    function moveNemo(_event) {
+    function checkPositionNemo(_event) {
         let clickPositionX = _event.clientX; // clientX ist Werte WO geklickt wurde
         let clickPositionY = _event.clientY;
-        if (clickPositionY <= FutterNemo.nemo.y) {
-            FutterNemo.nemo.y -= 10;
-        }
-        else {
-            FutterNemo.nemo.y += 10;
+        let positionNemo = clickPositionX + clickPositionY; // positionNemo kann direkt in compare() �bergeben werden, da compare() direkt in checkPositionNemo aufgerufen wird
+        //        console.log("positionNemo" + position        
+        // Per Mausclick Nemo hoch/runter steuern in Nemo.ts
+        FutterNemo.nemo.moveNemo(clickPositionY);
+        checkShark(); // nur aufrufen wenn geklickt wird -> Browser entlasten
+        compare(positionNemo); // positionNemo kann direkt in compare() �bergeben werden, da compare() direkt in checkPositionNemo aufgerufen wird
+    }
+    function compare(_positionNemo) {
+        for (let i = 0; i < sharksPositions.length; i++) {
+            if (_positionNemo - sharksPositions[i] < 5 && _positionNemo - sharksPositions[i] > -5) {
+                gameOver();
+            }
         }
     }
-    console.log(superclass);
+    ;
+    function gameOver() {
+        window.alert("GAME OVER!");
+        if (window.alert) {
+            location.reload();
+        }
+        // show Altert box mit Button f�r window reload = neustart
+    }
+    ;
 })(FutterNemo || (FutterNemo = {})); // namespace zu
 //# sourceMappingURL=Canvas.js.map

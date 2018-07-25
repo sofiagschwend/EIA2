@@ -4,9 +4,14 @@ namespace FutterNemo { //neuer nc
 
     // Funktion, um den Hintergrund zu zeichnen
     export function environment(): void {
+        let gradient: CanvasGradient = crc2.createLinearGradient(0, 0, 0, 500);
+
         // Hintergrund Einfärben
-        crc2.fillStyle = "lightblue";
+        gradient.addColorStop(0, "#a1beea");
+        gradient.addColorStop(1, "#62d1c9");
+        crc2.fillStyle = gradient;
         crc2.fillRect(0, 0, 1000, 600);
+
 
         // Funktionsaufrufe - wer zuerst kommt, malt zuerst
         drawRocks(350, 460);
@@ -75,8 +80,8 @@ namespace FutterNemo { //neuer nc
         crc2.lineTo(_x + 200, _y - 100);
         crc2.lineTo(_x, _y - 100);
         crc2.closePath();
-        crc2.fillStyle = "brown";
-        crc2.strokeStyle = "white";
+        crc2.fillStyle = "#752323";
+        crc2.strokeStyle = "#752323";
         crc2.stroke();
         crc2.fill();
 
@@ -85,8 +90,8 @@ namespace FutterNemo { //neuer nc
         crc2.lineTo(_x + 190, _y - 150);
         crc2.quadraticCurveTo(_x + 70, _y - 190, _x, _y - 100);
         crc2.closePath();
-        crc2.fillStyle = "brown";
-        crc2.strokeStyle = "brown";
+        crc2.fillStyle = "#752323";
+        crc2.strokeStyle = "#752323";
         crc2.stroke();
         crc2.fill();
     }

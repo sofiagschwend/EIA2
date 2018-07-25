@@ -5,6 +5,7 @@ namespace FutterNemo { //neuer nc
     let superclass: Superclass[] = [];
     export let canvas: HTMLCanvasElement;
     export let nemo: Nemo; // muss sichtbar sein für moveNemo
+    let sharksPositions: number[] = []; // Position jedes Sharks abspeichern
 
 
     // Variable, in der das Hintergrundbild abgespeichert wird (siehe Init-Funktion)
@@ -14,12 +15,12 @@ namespace FutterNemo { //neuer nc
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
         console.log(crc2);
-        canvas.addEventListener("click", moveNemo);
+        canvas.addEventListener("click", checkPositionNemo);
 
         // Aufruf der Funktion "environment" - Aufruf der Funktionen, die den Hintergrund malen
         environment();
 
-        
+
         // 1 NEMO erstellen aus KLasse Nemo und wird in Array nemo gepusht = Objekt        
         nemo = new Nemo(); // oben als nemo von Nemo festgelegt und sichtbar durch export
         superclass.push(nemo);
@@ -65,7 +66,9 @@ namespace FutterNemo { //neuer nc
         // Aufruf der draw und move Funktionen
         moveObjects();
         drawObjects();
+
     }
+
 
     // MoveObjects-Funktion
     function moveObjects(): void {
@@ -74,6 +77,7 @@ namespace FutterNemo { //neuer nc
             superclass[i].move();
         }
     }
+
 
     // DrawObjects-Function
     function drawObjects(): void {
@@ -84,21 +88,58 @@ namespace FutterNemo { //neuer nc
     }
 
 
-    // click Event abgreifen für Nemo move
-    function moveNemo(_event: MouseEvent): void {
+    // Position Shark ermittlen und in einer Variablen let positionShark speichern
+    function checkShark() {
+        sharksPositions.length = 0; // Array leeren, damit nur aktuelle Sharks 
+        for (let i: number = 1; i < 8; i++) {
+            let shark: Shark = <Shark>superclass[i];
+            let positionShark: number = shark.checkPositionShark();
+            //            console.log("positionShark" + posit            
+            sharksPositions.push(positionShark); // Array das Position jedes Sharks abspeichern
+        }
+        return sharksPositions // Ganzes Array aus checkShark rausholen und sichtbar machen für Canvas.ts
+    }
 
+    // funktion um Nemo nach oben/unten zu bewegen durch Mausklick in positionNemo < Bereich / positionNemo > Bereich
+    // click Event abgreifen für Nemo move
+    function checkPositionNemo(_event: MouseEvent): void {
         let clickPositionX: number = _event.clientX; // clientX ist Werte WO geklickt wurde
         let clickPositionY: number = _event.clientY;
+        let positionNemo: number = clickPositionX + clickPositionY; // positionNemo kann direkt in compare() übergeben werden, da compare() direkt in checkPositionNemo aufgerufen wird
 
-        if (clickPositionY <= nemo.y) { // falls click ÜBER Nemo
-            nemo.y -= 10;
-        } else { // alles andere an clicks move down (click UNTER Nemo)
-            nemo.y += 10;
-        }
+        //        console.log("positionNemo" + position        
+        // Per Mausclick Nemo hoch/runter steuern in Nemo.ts
+        nemo.moveNemo(clickPositionY);
+        checkShark(); // nur aufrufen wenn geklickt wird -> Browser entlasten
+        compare(positionNemo); // positionNemo kann direkt in compare() übergeben werden, da compare() direkt in checkPositionNemo aufgerufen wird
 
     }
-    
-    console.log(superclass);
+
+    function compare(_positionNemo: number): void {
+        for (let i: number = 0; i < sharksPositions.length; i++) {
+           let test =  _positionNemo - sharksPositions[i];
+            console.log(test);
+//           if ( _positionNemo - sharksPositions[i] < 8 && _positionNemo - sharksPositions[i] > -5){
+//                //gameOver()
+//            } else {
+////                let calc: number =  _positionNemo - sharksPositions[i]
+////            console.log("calc" + calc);
+//               // console.log("nix passiert und Nemo lebt");
+//            
+//        }
+    };
+
+//    function gameOver(): void {
+//        window.alert("GAME OVER!");
+//        if (window.alert) {
+//        location.reload();    
+//        }
+//        
+//        // show Altert box mit Button für window reload = neustart
+//    };
+
+
+
 
 
 }// namespace zu
