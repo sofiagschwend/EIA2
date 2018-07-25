@@ -20,8 +20,8 @@ var FutterNemo;
          }*/
         // Bereich in der Sich Nemo auf halten darf
         setRandomPosition() {
-            this.x = Math.random() * (500 - 300) + 300; // Math.random() * (max - min) + min
-            this.y = Math.random() * (650 - 50) + 50;
+            this.x = Math.random() * (800 - 600) + 600; // Math.random() * (max - min) + min
+            this.y = Math.random() * (550 - 50) + 50;
         }
         // Nemo zeichnen in orange
         draw() {

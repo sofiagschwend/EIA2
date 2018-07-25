@@ -1,7 +1,7 @@
 namespace FutterNemo { //neuer nc
-    
+
     // ALLES WAS ENVIRONMENT AUSMACHT UND STATISCH IST
-    
+
     // Funktion, um den Hintergrund zu zeichnen
     export function environment(): void {
         // Hintergrund Einfärben
@@ -9,13 +9,13 @@ namespace FutterNemo { //neuer nc
         crc2.fillRect(0, 0, 1000, 600);
 
         // Funktionsaufrufe - wer zuerst kommt, malt zuerst
-        drawRocks(200, 450);
-        drawRocks(350, 450);
+        drawRocks(350, 460);
+        drawRocks(400, 410);
         drawGrass(925, 150);
         drawSand();
-        drawBox(620, 500);
+        drawBox(120, 550);
     }
-    
+
     // FELSEN
     function drawRocks(_x: number, _y: number): void {
         crc2.beginPath();
@@ -54,8 +54,9 @@ namespace FutterNemo { //neuer nc
     function drawSand(): void {
         crc2.beginPath();
         crc2.moveTo(0, 550);
-        crc2.quadraticCurveTo(350, 400, 500, 500);
-        crc2.quadraticCurveTo(800, 400, 1000, 300);
+        crc2.quadraticCurveTo(450, 450, 300, 500);
+        crc2.quadraticCurveTo(300, 450, 600, 450);
+        crc2.quadraticCurveTo(700, 400, 1000, 450);
         crc2.lineTo(1000, 600);
         crc2.lineTo(0, 600);
         crc2.lineTo(0, 550);
@@ -89,6 +90,6 @@ namespace FutterNemo { //neuer nc
         crc2.stroke();
         crc2.fill();
     }
-    
-    
+
+
 }// namespace zu

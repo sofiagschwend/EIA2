@@ -11,8 +11,8 @@
         }
 
         setRandomPosition(): void {
-            this.x = Math.random() * (730 - 760) + 760;           
-            this.y = Math.random() * 550;
+            this.x = Math.random() * (730 - 760) + 760;     // Math.random() * (max - min) + min      
+            this.y = Math.random() * 450;
             this.scale = Math.random() * 10;
             }
         
@@ -22,7 +22,7 @@
             this.y -= 2;
             // If-Abfrage: Wenn y kleiner als 0 ist, dann soll y wieder 510 sein
             if (this.y < 0) {
-                this.y = 510;
+                this.y = 410;
             }
         }
 

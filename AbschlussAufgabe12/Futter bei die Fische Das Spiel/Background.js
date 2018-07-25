@@ -7,11 +7,11 @@ var FutterNemo;
         FutterNemo.crc2.fillStyle = "lightblue";
         FutterNemo.crc2.fillRect(0, 0, 1000, 600);
         // Funktionsaufrufe - wer zuerst kommt, malt zuerst
-        drawRocks(200, 450);
-        drawRocks(350, 450);
+        drawRocks(350, 460);
+        drawRocks(400, 410);
         drawGrass(925, 150);
         drawSand();
-        drawBox(620, 500);
+        drawBox(120, 550);
     }
     FutterNemo.environment = environment;
     // FELSEN
@@ -50,8 +50,9 @@ var FutterNemo;
     function drawSand() {
         FutterNemo.crc2.beginPath();
         FutterNemo.crc2.moveTo(0, 550);
-        FutterNemo.crc2.quadraticCurveTo(350, 400, 500, 500);
-        FutterNemo.crc2.quadraticCurveTo(800, 400, 1000, 300);
+        FutterNemo.crc2.quadraticCurveTo(450, 450, 300, 500);
+        FutterNemo.crc2.quadraticCurveTo(300, 450, 600, 450);
+        FutterNemo.crc2.quadraticCurveTo(700, 400, 1000, 450);
         FutterNemo.crc2.lineTo(1000, 600);
         FutterNemo.crc2.lineTo(0, 600);
         FutterNemo.crc2.lineTo(0, 550);

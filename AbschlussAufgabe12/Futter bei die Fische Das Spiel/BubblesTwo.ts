@@ -16,7 +16,7 @@ namespace FutterNemo { //neuer nc
             this.x += 0;
             this.y -= 2;
             if (this.y < 0) {
-                this.y = 550;
+                this.y = 450;
             }   
         }   
    }

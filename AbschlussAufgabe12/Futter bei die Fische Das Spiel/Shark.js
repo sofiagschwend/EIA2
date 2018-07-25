@@ -7,18 +7,33 @@ var FutterNemo;
         }
         move() {
             if (this.x > FutterNemo.canvas.width) {
-                this.x = -80; // beginne auf x Achse vor Bildschirm
-                this.y += Math.random() * ((FutterNemo.crc2.canvas.height - 10) - 0) + 1; // Math.random() * (max - min) + min
+                this.x = -100; // beginne auf x Achse vor Bildschirm
+                if (this.y < FutterNemo.canvas.height - 570) {
+                    this.setRandomPositionY();
+                }
+                else if (this.y > FutterNemo.canvas.height - 30) {
+                    this.setRandomPositionY();
+                }
+                ;
+                console.log(this.y);
             }
             else {
                 this.x += 2; // Geschwindigkeit um 2px nach rechts ist +x
             }
             ;
+            console.log("Move");
         }
+        // Random Sharks anzeigen
         setRandomPosition() {
             this.x = Math.random() * FutterNemo.crc2.canvas.width;
             this.y = Math.random() * FutterNemo.crc2.canvas.height - 200;
+            console.log("RandomPosition");
         }
+        // Sharks in Sichtfeld anzeigen
+        setRandomPositionY() {
+            this.y = Math.random() * FutterNemo.crc2.canvas.height - 200;
+        }
+        ;
         draw() {
             FutterNemo.crc2.beginPath();
             FutterNemo.crc2.moveTo(this.x + 30, this.y + 40); // x=30, y=40
