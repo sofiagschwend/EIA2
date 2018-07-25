@@ -105,9 +105,9 @@ namespace FutterNemo { //neuer nc
     function checkPositionNemo(_event: MouseEvent): void {
         let clickPositionX: number = _event.clientX; // clientX ist Werte WO geklickt wurde
         let clickPositionY: number = _event.clientY;
-        let positionNemo: number = clickPositionX + clickPositionY; // positionNemo kann direkt in compare() übergeben werden, da compare() direkt in checkPositionNemo aufgerufen wird
+        let positionNemo: number = nemo.checkNemo(); // positionNemo kann direkt in compare() übergeben werden, da compare() direkt in checkPositionNemo aufgerufen wird
 
-        //        console.log("positionNemo" + position        
+               
         // Per Mausclick Nemo hoch/runter steuern in Nemo.ts
         nemo.moveNemo(clickPositionY);
         checkShark(); // nur aufrufen wenn geklickt wird -> Browser entlasten
@@ -117,26 +117,25 @@ namespace FutterNemo { //neuer nc
 
     function compare(_positionNemo: number): void {
         for (let i: number = 0; i < sharksPositions.length; i++) {
-           let test =  _positionNemo - sharksPositions[i];
-            console.log(test);
-//           if ( _positionNemo - sharksPositions[i] < 8 && _positionNemo - sharksPositions[i] > -5){
-//                //gameOver()
-//            } else {
-////                let calc: number =  _positionNemo - sharksPositions[i]
-////            console.log("calc" + calc);
-//               // console.log("nix passiert und Nemo lebt");
-//              }   
+           let calc: number =  _positionNemo - sharksPositions[i];
+            //console.log(calc);
+           if( calc < 70 && calc > - 20 ){
+                gameOver();
+               console.log("getroffen");
+            } else {
+               // console.log("nix passiert und Nemo lebt");
+              }   
         }
     };
 
-//    function gameOver(): void {
-//        window.alert("GAME OVER!");
-//        if (window.alert) {
-//        location.reload();    
-//        }
-//        
-//        // show Altert box mit Button für window reload = neustart
-//    };
+    function gameOver(): void {
+        window.alert("GAME OVER!");
+        if (window.alert) {
+        location.reload();    
+        }
+        
+        // show Altert box mit Button für window reload = neustart
+    };
 
 
 

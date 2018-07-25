@@ -32,6 +32,11 @@ var FutterNemo;
                 this.y += 15;
             }
         }
+        checkNemo() {
+            let position = this.x + this.y;
+            return position;
+        }
+        ;
     }
     FutterNemo.Nemo = Nemo; // class  Nemo schlie�en
 })(FutterNemo || (FutterNemo = {})); //namespace zu

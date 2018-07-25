@@ -37,6 +37,12 @@ namespace FutterNemo { //neuer nc
                 this.y += 15;
             }
         }
+        
+        checkNemo(): number {
+            let position: number = this.x + this.y;
+
+            return position;
+        };
 
 
         // Check Position von Shark

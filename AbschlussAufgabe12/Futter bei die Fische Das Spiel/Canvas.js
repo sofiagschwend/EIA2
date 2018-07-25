@@ -76,8 +76,7 @@ var FutterNemo;
     function checkPositionNemo(_event) {
         let clickPositionX = _event.clientX; // clientX ist Werte WO geklickt wurde
         let clickPositionY = _event.clientY;
-        let positionNemo = clickPositionX + clickPositionY; // positionNemo kann direkt in compare() �bergeben werden, da compare() direkt in checkPositionNemo aufgerufen wird
-        //        console.log("positionNemo" + position        
+        let positionNemo = FutterNemo.nemo.checkNemo(); // positionNemo kann direkt in compare() �bergeben werden, da compare() direkt in checkPositionNemo aufgerufen wird
         // Per Mausclick Nemo hoch/runter steuern in Nemo.ts
         FutterNemo.nemo.moveNemo(clickPositionY);
         checkShark(); // nur aufrufen wenn geklickt wird -> Browser entlasten
@@ -85,9 +84,23 @@ var FutterNemo;
     }
     function compare(_positionNemo) {
         for (let i = 0; i < sharksPositions.length; i++) {
-            let test = _positionNemo - sharksPositions[i];
-            console.log(test);
+            let calc = _positionNemo - sharksPositions[i];
+            //console.log(calc);
+            if (calc < 70 && calc > -20) {
+                gameOver();
+                console.log("getroffen");
+            }
+            else {
+            }
         }
+    }
+    ;
+    function gameOver() {
+        window.alert("GAME OVER!");
+        if (window.alert) {
+            location.reload();
+        }
+        // show Altert box mit Button f�r window reload = neustart
     }
     ;
 })(FutterNemo || (FutterNemo = {})); // namespace zu
