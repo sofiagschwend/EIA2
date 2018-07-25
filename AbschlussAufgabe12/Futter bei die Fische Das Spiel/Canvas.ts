@@ -125,8 +125,8 @@ namespace FutterNemo { //neuer nc
 ////                let calc: number =  _positionNemo - sharksPositions[i]
 ////            console.log("calc" + calc);
 //               // console.log("nix passiert und Nemo lebt");
-//            
-//        }
+//              }   
+        }
     };
 
 //    function gameOver(): void {

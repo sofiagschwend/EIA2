@@ -85,18 +85,9 @@ var FutterNemo;
     }
     function compare(_positionNemo) {
         for (let i = 0; i < sharksPositions.length; i++) {
-            if (_positionNemo - sharksPositions[i] < 5 && _positionNemo - sharksPositions[i] > -5) {
-                gameOver();
-            }
+            let test = _positionNemo - sharksPositions[i];
+            console.log(test);
         }
-    }
-    ;
-    function gameOver() {
-        window.alert("GAME OVER!");
-        if (window.alert) {
-            location.reload();
-        }
-        // show Altert box mit Button f�r window reload = neustart
     }
     ;
 })(FutterNemo || (FutterNemo = {})); // namespace zu
