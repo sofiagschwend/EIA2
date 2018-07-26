@@ -50,9 +50,9 @@ namespace FutterNemo { //neuer nc
                 let distanceY = this.y - arraySharks[i].y;
                 console.log("x: " + distanceX);
                 console.log("y: " + distanceY);
-                if (distanceX < 80 && distanceX > - 40) {
+                if (distanceX < 70 && distanceX > - 40) {
 
-                    if (distanceY < 80 && distanceY > -40) {
+                    if (distanceY < 20 && distanceY > -20) {
                         this.gameOver();
                         console.log("treffer");
                     }

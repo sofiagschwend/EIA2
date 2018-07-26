@@ -1,11 +1,13 @@
 @charset "UTF-8";
+
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300');
+
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
 body {
 	font-family: 'Raleway', sans-serif;
 	color: white;
-	background-color: #5cb5d6;	
+	background-color: #5cb5d6;
 }
 
 #startscreen {
@@ -33,6 +35,20 @@ body {
 
 canvas {
 	margin: auto;
-	margin-top: 2em;
 	display: block;
+}
+
+@media screen and (min-width: 0px) {
+	#startscreen {
+		height: 100%;
+		width: auto;
+		box-sizing: border-box;
+		margin: 0;
+	}
+	canvas {
+		height: 100%;
+		width: auto;
+	}
+	@media screen and (min-width: 570px) {
+	}
 }

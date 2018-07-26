@@ -88,27 +88,15 @@ namespace FutterNemo {
         }
     }
 
-    //    // Position Shark ermittlen und in einer Variablen let positionShark speichern
-    //    function checkShark() {
-    //        sharksPositions.length = 0; // Array leeren, damit nur aktuelle Sharks 
-    //        for (let i: number = 1; i < 8; i++) {
-    //            let shark: Shark = <Shark>superclass[i];
-    //            let positionShark: number = shark.checkPositionShark();
-    //            //            console.log("positionShark" + posit            
-    //            sharksPositions.push(positionShark); // Array das Position jedes Sharks abspeichern
-    //        }
-    //        return sharksPositions // Ganzes Array aus checkShark rausholen und sichtbar machen für Canvas.ts
-    //    }
 
     // Nemo nach oben/unten bewegen durch Mausklick in positionNemo < Bereich / positionNemo > Bereich
     function checkPositionNemo(_event: MouseEvent): void {                                    // click Event abgreifen für Nemo move
-        //        //let clickPositionX: number = _event.clientX;                                        // clientX bleibt pro Durchgang gleich
+        //let clickPositionX: number = _event.clientX;                                        // clientX bleibt pro Durchgang gleich
         let clickPositionY: number = _event.clientY;                                          // clientY ist Werte WO geklickt wurde
         let positionNemo: number = nemo.checkNemo();                                          // positionNemo kann direkt in compare() übergeben werden, da compare() direkt in checkPositionNemo aufgerufen wird
 
         nemo.moveNemo(clickPositionY);                                                        // Per Mausclick Nemo hoch/runter steuern in Nemo.ts
         nemo.collision();
-        //checkShark(); // nur aufrufen wenn geklickt wird -> Browser entlasten
     }
 
 
