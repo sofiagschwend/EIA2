@@ -1,5 +1,5 @@
 <!--
-Aufgabe: (Abschlussaufgabe - Futter für Nemo)
+Aufgabe: (Abschlussaufgabe - Futter bei die Fische)
 Name: (Sofia Gschwend)
 Matrikel: (257664)
 Datum: (27.07.2018)
@@ -7,11 +7,13 @@ Hiermit versichere ich, dass ich diesen
 Code alleine geschrieben habe. Er wurde
 nicht kopiert und auch nicht diktiert.
 -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Futter für Nemo</title>
+<title>Nemo - Futter bei die Fische</title>
 <meta charset="utf-8" />
+<link type="text/css" rel="stylesheet" href="Startbild.css">
 <script src="Superclass.js" type="text/javascript" charset="utf-8"></script>
 <script src="Background.js" type="text/javascript" charset="utf-8"></script>
 <script src="Nemo.js" type="text/javascript" charset="utf-8"></script>
@@ -21,24 +23,21 @@ nicht kopiert und auch nicht diktiert.
 <script src="Canvas.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
-	<canvas width=1000 height=600></canvas>
-
-	<h1>Futter Bei Die Fische</h1>
-	<br>
-	<p> Hilf Nemo den Haien auszuweichen.</p>
-	<div>
-	Nemo muss immer in Bewegung sein um den Haien auszuweichen!
-	Klicke dafür in	den Bereich über Nemo um ihn nach oben zu bewegen. Klicke in den
-	Bereich unter Nemo um ihn nach unten zu bewegen.
+	<div id="startscreen">
+		<h1>Futter Bei Die Fische</h1>
+		<br>
+		<p>Hilf Nemo den Haien auszuweichen.</p>
+		<div>
+			Nemo muss immer in Bewegung sein um den Haien auszuweichen! <br>
+			Klicke dafür in den Bereich über Nemo um ihn nach oben zu bewegen.<br>
+			Klicke in den Bereich unter Nemo um ihn nach unten zu bewegen.
+		</div>
+		<br>
+		<button id="startButton">Let's Fetz!</button>
+	</div>	
+	<div id="aquarium">
+		<canvas width=1000 height=600></canvas>
 	</div>
 
 </body>
-<style>
-<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-
-*{
-font-family: 'Raleway', sans-serif;
-}
-
-</style>
 </html>

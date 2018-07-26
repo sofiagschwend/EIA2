@@ -19,5 +19,5 @@ var FutterNemo;
         }
     }
     FutterNemo.BubbleTwo = BubbleTwo;
-})(FutterNemo || (FutterNemo = {}));
+})(FutterNemo || (FutterNemo = {})); // namespace zu
 //# sourceMappingURL=BubblesTwo.js.map

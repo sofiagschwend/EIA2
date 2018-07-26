@@ -24,7 +24,6 @@ var FutterNemo;
         }
         // move Nemo nach Mausklick
         moveNemo(_clickPositionY) {
-            console.log(_clickPositionY);
             if (_clickPositionY <= this.y) {
                 this.y -= 15;
             }
@@ -37,6 +36,27 @@ var FutterNemo;
             return position;
         }
         ;
+        collision() {
+            for (let i = 0; i < FutterNemo.arraySharks.length; i++) {
+                let distanceX = this.x - FutterNemo.arraySharks[i].x;
+                let distanceY = this.y - FutterNemo.arraySharks[i].y;
+                console.log("x: " + distanceX);
+                console.log("y: " + distanceY);
+                if (distanceX < 80 && distanceX > -40) {
+                    if (distanceY < 80 && distanceY > -40) {
+                        this.gameOver();
+                        console.log("treffer");
+                    }
+                }
+            }
+        }
+        gameOver() {
+            window.alert("Oh nein, Nemo wurde gefressen!");
+            if (window.alert) {
+                //start();
+                location.reload();
+            }
+        }
     }
     FutterNemo.Nemo = Nemo; // class  Nemo schlie�en
 })(FutterNemo || (FutterNemo = {})); //namespace zu

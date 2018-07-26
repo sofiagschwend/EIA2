@@ -12,5 +12,5 @@ var FutterNemo;
         }
     }
     FutterNemo.Superclass = Superclass;
-})(FutterNemo || (FutterNemo = {}));
+})(FutterNemo || (FutterNemo = {})); // namespace zu
 //# sourceMappingURL=Superclass.js.map

@@ -1,7 +1,6 @@
-namespace FutterNemo { //neuer nc
+namespace FutterNemo {
 
     // ALLES WAS ENVIRONMENT AUSMACHT UND STATISCH IST
-
     // Funktion, um den Hintergrund zu zeichnen
     export function environment(): void {
         let gradient: CanvasGradient = crc2.createLinearGradient(0, 0, 0, 500);
@@ -11,7 +10,6 @@ namespace FutterNemo { //neuer nc
         gradient.addColorStop(1, "#62d1c9");
         crc2.fillStyle = gradient;
         crc2.fillRect(0, 0, 1000, 600);
-
 
         // Funktionsaufrufe - wer zuerst kommt, malt zuerst
         drawRocks(350, 460);
@@ -95,6 +93,5 @@ namespace FutterNemo { //neuer nc
         crc2.stroke();
         crc2.fill();
     }
-
 
 }// namespace zu

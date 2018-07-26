@@ -30,25 +30,50 @@ namespace FutterNemo { //neuer nc
 
         // move Nemo nach Mausklick
         moveNemo(_clickPositionY: number): void {
-            console.log(_clickPositionY);
+
             if (_clickPositionY <= this.y) { // falls click ‹BER Nemo
                 this.y -= 15;
             } else { // alles andere an clicks move down (click UNTER Nemo)
                 this.y += 15;
             }
         }
-        
+
         checkNemo(): number {
             let position: number = this.x + this.y;
 
             return position;
         };
 
+        collision() {
+            for (let i = 0; i < arraySharks.length; i++) {
+                let distanceX = this.x - arraySharks[i].x;
+                let distanceY = this.y - arraySharks[i].y;
+                console.log("x: " + distanceX);
+                console.log("y: " + distanceY);
+                if (distanceX < 80 && distanceX > - 40) {
 
+                    if (distanceY < 80 && distanceY > -40) {
+                        this.gameOver();
+                        console.log("treffer");
+                    }
+                }
+            }
+        }
+
+        gameOver(): void {
+            window.alert("Oh nein, Nemo wurde gefressen!");
+            if (window.alert) {
+                //start();
+                location.reload();
+            }
+        }
+
+
+        // KONZEPT
         // Check Position von Shark
-//        checkPositionShark(): void {
-//            let test = Shark.x;
-//        }
+        //        checkPositionShark(): void {
+        //            let test = Shark.x;
+        //        }
 
         // Vergleiche Position von Nemo & MouseDown
         // move Nemo hoch runter
@@ -56,9 +81,9 @@ namespace FutterNemo { //neuer nc
         // Vergleiche POsition Nemo & Shark
 
         // *** if distance near to 10px GAME OVER -> Alert Box Gamer Over
-        // Alert Box: <button> Reload Game <button>
+        // Alert Box: <button> ame <button>
 
-        
+
 
 
     } // class  Nemo schlieﬂen

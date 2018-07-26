@@ -30,5 +30,5 @@ var FutterNemo;
         }
     }
     FutterNemo.BubbleOne = BubbleOne;
-})(FutterNemo || (FutterNemo = {}));
+})(FutterNemo || (FutterNemo = {})); // namespace zu
 //# sourceMappingURL=BubblesOne.js.map

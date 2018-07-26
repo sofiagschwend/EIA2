@@ -1,10 +1,10 @@
- namespace FutterNemo { //neuer nc
- 
- //rechts
+namespace FutterNemo {
+
+    //rechts
     export class BubbleOne extends Superclass {
-        
+
         scale: number;
-       
+
         constructor() {
             super();
             this.setRandomPosition();
@@ -14,8 +14,8 @@
             this.x = Math.random() * (850 - 880) + 880;     // Math.random() * (max - min) + min      
             this.y = Math.random() * 450;
             this.scale = Math.random() * 10;
-            }
-        
+        }
+
         move(): void {
             // Bewegung nur in Richtung der y-Achse (horizontal)
             this.x += 0;
@@ -34,6 +34,6 @@
             crc2.strokeStyle = "rgb(0, 0, 139, 0.6)"; // Linienstyle
             crc2.fill();
         }
-} 
+    }
 
-}
+} // namespace zu

@@ -1,4 +1,5 @@
-namespace FutterNemo { //neuer nc
+namespace FutterNemo {
+    
     export class Superclass {
         x: number;
         y: number;
@@ -15,4 +16,4 @@ namespace FutterNemo { //neuer nc
             // ohne Inhalt
         }
     }
-}
+} // namespace zu
