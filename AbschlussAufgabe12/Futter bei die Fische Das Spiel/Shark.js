@@ -8,6 +8,7 @@ var FutterNemo;
         move() {
             if (this.x > FutterNemo.canvas.width) {
                 this.x = -100; // beginne auf x Achse vor Bildschirm
+                this.setRandompositionY();
                 if (this.y < FutterNemo.canvas.height - 570) {
                     this.setRandompositionY();
                 }

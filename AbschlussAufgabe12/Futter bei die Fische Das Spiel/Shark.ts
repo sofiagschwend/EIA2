@@ -11,7 +11,8 @@ namespace FutterNemo {
         move(): void {                                                              // Shark bist du auserhalb der width, dann setzte neuen x & y Wert
             if (this.x > canvas.width) {
                 this.x = -100;                                                      // beginne auf x Achse vor Bildschirm
-
+                this.setRandompositionY();
+                
                 if (this.y < canvas.height - 570) {
                     this.setRandompositionY();
 
