@@ -11,7 +11,7 @@ namespace FutterNemo { //neuer nc
 
         // Bereich in der Sich Nemo aufhalten darf
         setRandomPosition(): void {
-            this.x = Math.random() * (800 - 600) + 600;       // Math.random() * (max - min) + min
+            this.x = Math.random() * (800 - 600) + 600;              // Math.random() * (max - min) + min
             this.y = Math.random() * (550 - 50) + 50;
         }
 
@@ -31,9 +31,9 @@ namespace FutterNemo { //neuer nc
         // move Nemo nach Mausklick
         moveNemo(_clickPositionY: number): void {
 
-            if (_clickPositionY <= this.y) { // falls click ÜBER Nemo
+            if (_clickPositionY <= this.y) {                        // falls click ÜBER Nemo
                 this.y -= 15;
-            } else { // alles andere an clicks move down (click UNTER Nemo)
+            } else {                                                // alles andere an clicks move down (click UNTER Nemo)
                 this.y += 15;
             }
         }
@@ -46,13 +46,16 @@ namespace FutterNemo { //neuer nc
 
         collision() {
             for (let i = 0; i < arraySharks.length; i++) {
+                let calc = arraySharks[i].y + 60;
                 let distanceX = this.x - arraySharks[i].x;
-                let distanceY = this.y - arraySharks[i].y;
-                console.log("x: " + distanceX);
-                console.log("y: " + distanceY);
-                if (distanceX < 70 && distanceX > - 40) {
+                let distanceY = this.y - calc;
+                //console.log("Shark: " + arraySharks[i].x);
+                //console.log("Shark: " + arraySharks[i].y);
+               console.log("y: " + calc);
+                
+                if (distanceX < 90 && distanceX > - 20) {
 
-                    if (distanceY < 20 && distanceY > -20) {
+                    if (distanceY < 30 && distanceY > -40) {
                         this.gameOver();
                         console.log("treffer");
                     }
@@ -63,7 +66,7 @@ namespace FutterNemo { //neuer nc
         gameOver(): void {
             window.alert("Oh nein, Nemo wurde gefressen!");
             if (window.alert) {
-                //start();
+                init();
                 location.reload();
             }
         }

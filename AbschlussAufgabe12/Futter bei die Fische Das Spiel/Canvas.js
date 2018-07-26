@@ -24,7 +24,7 @@ var FutterNemo;
         FutterNemo.nemo = new FutterNemo.Nemo(); // oben als nemo von Nemo festgelegt und sichtbar durch export
         superclass.push(FutterNemo.nemo);
         // SHARK zu zeichnen
-        for (let i = 0; i < 7; i++) {
+        for (let i = 0; i < 1; i++) {
             let shark = new FutterNemo.Shark();
             superclass.push(shark);
             FutterNemo.arraySharks.push(shark);
@@ -42,7 +42,8 @@ var FutterNemo;
         imgData = FutterNemo.crc2.getImageData(0, 0, FutterNemo.canvas.width, FutterNemo.canvas.height);
         // Aufruf der Animate-Funktion
         animate();
-    } // init funktion zu ********************************************************************************************************************************
+    }
+    FutterNemo.init = init; // init funktion zu ********************************************************************************************************************************
     // Animtions-Funktion - setzt TimeOut
     function animate() {
         window.setTimeout(animate, 10);
@@ -66,7 +67,9 @@ var FutterNemo;
     }
     // Nemo nach oben/unten bewegen durch Mausklick in positionNemo < Bereich / positionNemo > Bereich
     function checkPositionNemo(_event) {
-        //let clickPositionX: number = _event.clientX;                                        // clientX bleibt pro Durchgang gleich
+        //let clickPositionX: number = _event.clientX;  
+        console.log("Maus: " + _event.clientX);
+        console.log("Maus: " + _event.clientY); // clientX bleibt pro Durchgang gleich
         let clickPositionY = _event.clientY; // clientY ist Werte WO geklickt wurde
         let positionNemo = FutterNemo.nemo.checkNemo(); // positionNemo kann direkt in compare() �bergeben werden, da compare() direkt in checkPositionNemo aufgerufen wird
         FutterNemo.nemo.moveNemo(clickPositionY); // Per Mausclick Nemo hoch/runter steuern in Nemo.ts

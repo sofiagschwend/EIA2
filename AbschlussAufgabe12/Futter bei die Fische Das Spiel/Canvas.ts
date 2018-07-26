@@ -19,7 +19,7 @@ namespace FutterNemo {
     }
 
     // init funktion beginnen *****************************************************************************************************************************
-    function init(): void {
+   export function init(): void {
         document.getElementById("startscreen").style.display = "none";
         document.getElementById("aquarium").style.display = "initial";
         canvas = document.getElementsByTagName("canvas")[0];
@@ -35,7 +35,7 @@ namespace FutterNemo {
 
 
         // SHARK zu zeichnen
-        for (let i: number = 0; i < 7; i++) {
+        for (let i: number = 0; i < 1; i++) {
             let shark: Shark = new Shark();
             superclass.push(shark);
             arraySharks.push(shark);
@@ -91,7 +91,9 @@ namespace FutterNemo {
 
     // Nemo nach oben/unten bewegen durch Mausklick in positionNemo < Bereich / positionNemo > Bereich
     function checkPositionNemo(_event: MouseEvent): void {                                    // click Event abgreifen für Nemo move
-        //let clickPositionX: number = _event.clientX;                                        // clientX bleibt pro Durchgang gleich
+        //let clickPositionX: number = _event.clientX;  
+        console.log("Maus: " +  _event.clientX);      
+         console.log("Maus: " +  _event.clientY);                                    // clientX bleibt pro Durchgang gleich
         let clickPositionY: number = _event.clientY;                                          // clientY ist Werte WO geklickt wurde
         let positionNemo: number = nemo.checkNemo();                                          // positionNemo kann direkt in compare() übergeben werden, da compare() direkt in checkPositionNemo aufgerufen wird
 

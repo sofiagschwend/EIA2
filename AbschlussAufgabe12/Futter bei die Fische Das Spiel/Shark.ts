@@ -58,6 +58,7 @@ namespace FutterNemo {
             crc2.stroke();
             crc2.fill();
             // Hai Flosse
+            crc2.beginPath();
             crc2.moveTo(this.x + 87, this.y + 41); // 87, 50
             crc2.lineTo(this.x + 90, this.y + 20); // 90, 20
             crc2.lineTo(this.x + 115, this.y + 40.5); // 125, 50

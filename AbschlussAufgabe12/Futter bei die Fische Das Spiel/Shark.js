@@ -50,6 +50,7 @@ var FutterNemo;
             FutterNemo.crc2.stroke();
             FutterNemo.crc2.fill();
             // Hai Flosse
+            FutterNemo.crc2.beginPath();
             FutterNemo.crc2.moveTo(this.x + 87, this.y + 41); // 87, 50
             FutterNemo.crc2.lineTo(this.x + 90, this.y + 20); // 90, 20
             FutterNemo.crc2.lineTo(this.x + 115, this.y + 40.5); // 125, 50

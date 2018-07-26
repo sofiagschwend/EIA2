@@ -38,12 +38,14 @@ var FutterNemo;
         ;
         collision() {
             for (let i = 0; i < FutterNemo.arraySharks.length; i++) {
+                let calc = FutterNemo.arraySharks[i].y + 60;
                 let distanceX = this.x - FutterNemo.arraySharks[i].x;
-                let distanceY = this.y - FutterNemo.arraySharks[i].y;
-                console.log("x: " + distanceX);
-                console.log("y: " + distanceY);
-                if (distanceX < 70 && distanceX > -40) {
-                    if (distanceY < 20 && distanceY > -20) {
+                let distanceY = this.y - calc;
+                //console.log("Shark: " + arraySharks[i].x);
+                //console.log("Shark: " + arraySharks[i].y);
+                console.log("y: " + calc);
+                if (distanceX < 90 && distanceX > -20) {
+                    if (distanceY < 30 && distanceY > -40) {
                         this.gameOver();
                         console.log("treffer");
                     }
@@ -53,7 +55,7 @@ var FutterNemo;
         gameOver() {
             window.alert("Oh nein, Nemo wurde gefressen!");
             if (window.alert) {
-                //start();
+                FutterNemo.init();
                 location.reload();
             }
         }
