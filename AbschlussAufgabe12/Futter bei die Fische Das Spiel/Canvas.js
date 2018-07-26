@@ -24,7 +24,7 @@ var FutterNemo;
         FutterNemo.nemo = new FutterNemo.Nemo(); // oben als nemo von Nemo festgelegt und sichtbar durch export
         superclass.push(FutterNemo.nemo);
         // SHARK zu zeichnen
-        for (let i = 0; i < 1; i++) {
+        for (let i = 0; i < 7; i++) {
             let shark = new FutterNemo.Shark();
             superclass.push(shark);
             FutterNemo.arraySharks.push(shark);

@@ -35,7 +35,7 @@ namespace FutterNemo {
 
 
         // SHARK zu zeichnen
-        for (let i: number = 0; i < 1; i++) {
+        for (let i: number = 0; i < 7; i++) {
             let shark: Shark = new Shark();
             superclass.push(shark);
             arraySharks.push(shark);
