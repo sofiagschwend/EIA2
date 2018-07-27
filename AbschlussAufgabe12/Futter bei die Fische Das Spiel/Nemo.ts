@@ -1,9 +1,7 @@
 namespace FutterNemo { //neuer nc
 
     export class Nemo extends Superclass {
-        direction: number;
-
-
+        
         constructor() {
             super();
             this.setRandomPosition();
@@ -11,7 +9,7 @@ namespace FutterNemo { //neuer nc
 
         // Bereich in der Sich Nemo aufhalten darf
         setRandomPosition(): void {
-            this.x = Math.random() * (800 - 600) + 600;              // Math.random() * (max - min) + min
+            this.x = Math.random() * (800 - 600) + 600;                     // Math.random() * (max - min) + min
             this.y = Math.random() * (550 - 50) + 50;
         }
 
@@ -31,9 +29,9 @@ namespace FutterNemo { //neuer nc
         // move Nemo nach Mausklick
         moveNemo(_clickPositionY: number): void {
 
-            if (_clickPositionY <= this.y) {                        // falls click ‹BER Nemo
+            if (_clickPositionY <= this.y) {                               // falls click ‹BER Nemo
                 this.y -= 15;
-            } else {                                                // alles andere an clicks move down (click UNTER Nemo)
+            } else {                                                       // alles andere an clicks move down (click UNTER Nemo)
                 this.y += 15;
             }
         }
@@ -43,51 +41,35 @@ namespace FutterNemo { //neuer nc
 
             return position;
         };
-
-        collision() {
-            for (let i = 0; i < arraySharks.length; i++) {
-                let calc = arraySharks[i].y + 60;
-                let distanceX = this.x - arraySharks[i].x;
-                let distanceY = this.y - calc;
+        
+        // collision in Nemo abfragen, da hier direkt this.x/this.y abgefragt werden kann ohne weitere Variable
+        collision(): void {
+            for (let i: number = 0; i < arraySharks.length; i++) {          // for-Schleife iteriert Array von Sharks durch und
+                let calc: number = arraySharks[i].y + 60;                   // Pixelwert anpassen der HitBox
+                let distanceX: number = this.x - arraySharks[i].x;          // distanceX ist NemoX - SharkX rechnen
+                let distanceY: number = this.y - calc;                      // distanceY ist NemoY - SharkX - (Pixelwert anpassen der HitBox) rechnen
                 //console.log("Shark: " + arraySharks[i].x);
                 //console.log("Shark: " + arraySharks[i].y);
-               console.log("y: " + calc);
+                //console.log("y: " + calc);
                 
-                if (distanceX < 90 && distanceX > - 20) {
+                if (distanceX < 90 && distanceX > - 20) {                   // Bereich in der Abstand in XRichtung von Nemo und Shark sein darf
 
-                    if (distanceY < 30 && distanceY > -40) {
-                        this.gameOver();
-                        console.log("treffer");
+                    if (distanceY < 30 && distanceY > -40) {                // Bereich in der Abstand in YRichtung von Nemo und Shark sein darf
+                        this.gameOver();                                    // wenn BEIDE IF-Abfragen zutreffen, dann gameOver()
+                        // console.log("treffer");
                     }
                 }
             }
         }
 
+        // Alert Box wenn Sharks und Nemos HitBoxen sich treffen
         gameOver(): void {
-            window.alert("Oh nein, Nemo wurde gefressen!");
-            if (window.alert) {
+            window.alert("Oh nein, Nemo wurde gefressen!");                 // Alert Box
+            if (window.alert) {                                             // Fenster neu laden = Neustart des Spiels -> init()
                 init();
                 location.reload();
             }
         }
-
-
-        // KONZEPT
-        // Check Position von Shark
-        //        checkPositionShark(): void {
-        //            let test = Shark.x;
-        //        }
-
-        // Vergleiche Position von Nemo & MouseDown
-        // move Nemo hoch runter
-
-        // Vergleiche POsition Nemo & Shark
-
-        // *** if distance near to 10px GAME OVER -> Alert Box Gamer Over
-        // Alert Box: <button> ame <button>
-
-
-
 
     } // class  Nemo schlieﬂen
 

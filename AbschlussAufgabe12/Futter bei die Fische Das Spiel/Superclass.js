@@ -4,6 +4,9 @@ var FutterNemo;
         constructor() {
             // ohne Inhalt
         }
+        setRandomPosition() {
+            // ohne Inhalt
+        }
         move() {
             // ohne Inhalt
         }

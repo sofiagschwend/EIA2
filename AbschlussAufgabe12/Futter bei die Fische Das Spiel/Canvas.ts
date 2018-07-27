@@ -5,8 +5,7 @@ namespace FutterNemo {
     export let crc2: CanvasRenderingContext2D;
     let superclass: Superclass[] = [];
     export let canvas: HTMLCanvasElement;
-    export let nemo: Nemo;                                                                          // muss sichtbar sein für moveNemo
-    let sharksPositions: number[] = [];                                                             // Position jedes Sharks abspeichern
+    export let nemo: Nemo;                                                            // Position jedes Sharks abspeichern
     export let arraySharks: any[] = [];
 
     let imgData: ImageData;                                                                         // Variable, in der das Hintergrundbild abgespeichert wird (siehe Init-Funktion)
@@ -92,8 +91,8 @@ namespace FutterNemo {
     // Nemo nach oben/unten bewegen durch Mausklick in positionNemo < Bereich / positionNemo > Bereich
     function checkPositionNemo(_event: MouseEvent): void {                                    // click Event abgreifen für Nemo move
         //let clickPositionX: number = _event.clientX;  
-        console.log("Maus: " +  _event.clientX);      
-         console.log("Maus: " +  _event.clientY);                                    // clientX bleibt pro Durchgang gleich
+        //console.log("Maus: " +  _event.clientX);      
+        //console.log("Maus: " +  _event.clientY);                                            // clientX bleibt pro Durchgang gleich
         let clickPositionY: number = _event.clientY;                                          // clientY ist Werte WO geklickt wurde
         let positionNemo: number = nemo.checkNemo();                                          // positionNemo kann direkt in compare() übergeben werden, da compare() direkt in checkPositionNemo aufgerufen wird
 

@@ -34,16 +34,7 @@ namespace FutterNemo {
         // Sharks in Sichtfeld anzeigen
         setRandompositionY(): void {
             this.y = Math.random() * crc2.canvas.height - 200;
-        };
-
-        // funktion um Shark Position auszulesen X und Y einzeln
-        checkPositionShark() {
-            let positionX: number = this.x;
-            let positionY: number = this.y;
-            let sharkFinalPosition: number = positionX + positionY;
-            
-            return sharkFinalPosition;                                               // ist zusammengezählte Zahl in Canvas.ts als positionShark
-        };
+        };     
 
        
         draw(): void {

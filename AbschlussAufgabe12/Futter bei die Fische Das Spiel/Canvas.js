@@ -2,7 +2,6 @@ var FutterNemo;
 (function (FutterNemo) {
     window.addEventListener("load", start);
     let superclass = [];
-    let sharksPositions = []; // Position jedes Sharks abspeichern
     FutterNemo.arraySharks = [];
     let imgData; // Variable, in der das Hintergrundbild abgespeichert wird (siehe Init-Funktion)
     function start(_event) {
@@ -68,8 +67,8 @@ var FutterNemo;
     // Nemo nach oben/unten bewegen durch Mausklick in positionNemo < Bereich / positionNemo > Bereich
     function checkPositionNemo(_event) {
         //let clickPositionX: number = _event.clientX;  
-        console.log("Maus: " + _event.clientX);
-        console.log("Maus: " + _event.clientY); // clientX bleibt pro Durchgang gleich
+        //console.log("Maus: " +  _event.clientX);      
+        //console.log("Maus: " +  _event.clientY);                                            // clientX bleibt pro Durchgang gleich
         let clickPositionY = _event.clientY; // clientY ist Werte WO geklickt wurde
         let positionNemo = FutterNemo.nemo.checkNemo(); // positionNemo kann direkt in compare() �bergeben werden, da compare() direkt in checkPositionNemo aufgerufen wird
         FutterNemo.nemo.moveNemo(clickPositionY); // Per Mausclick Nemo hoch/runter steuern in Nemo.ts

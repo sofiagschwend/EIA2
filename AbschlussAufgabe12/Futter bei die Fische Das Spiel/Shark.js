@@ -30,14 +30,6 @@ var FutterNemo;
             this.y = Math.random() * FutterNemo.crc2.canvas.height - 200;
         }
         ;
-        // funktion um Shark Position auszulesen X und Y einzeln
-        checkPositionShark() {
-            let positionX = this.x;
-            let positionY = this.y;
-            let sharkFinalPosition = positionX + positionY;
-            return sharkFinalPosition; // ist zusammengez�hlte Zahl in Canvas.ts als positionShark
-        }
-        ;
         draw() {
             // Hai K�rper start an Mund
             FutterNemo.crc2.beginPath();
