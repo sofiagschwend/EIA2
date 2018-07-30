@@ -51,6 +51,7 @@ var FutterNemo;
         // Aufruf der draw und move Funktionen
         moveObjects();
         drawObjects();
+        collision();
     }
     // MoveObjects-Funktion
     function moveObjects() {
@@ -64,6 +65,32 @@ var FutterNemo;
             superclass[i].draw();
         }
     }
+    // collision abfragen, da hier direkt this.x/this.y abgefragt werden kann ohne weitere Variable
+    function collision() {
+        for (let i = 0; i < FutterNemo.arraySharks.length; i++) {
+            let calc = FutterNemo.arraySharks[i].y + 60; // Pixelwert anpassen der HitBox
+            let distanceX = FutterNemo.nemo.x - FutterNemo.arraySharks[i].x; // distanceX ist NemoX - SharkX rechnen
+            let distanceY = FutterNemo.nemo.y - calc; // distanceY ist NemoY - SharkX - (Pixelwert anpassen der HitBox) rechnen
+            //console.log("Shark: " + arraySharks[i].x);
+            //console.log("Shark: " + arraySharks[i].y);
+            //console.log("y: " + calc);
+            if (distanceX < 90 && distanceX > -20) {
+                if (distanceY < 30 && distanceY > -40) {
+                    gameOver(); // wenn BEIDE IF-Abfragen zutreffen, dann gameOver()
+                }
+            }
+        }
+    }
+    ;
+    // Alert Box wenn Sharks und Nemos HitBoxen sich treffen
+    function gameOver() {
+        window.alert("Oh nein, Nemo wurde gefressen!"); // Alert Box
+        if (window.alert) {
+            init();
+            location.reload();
+        }
+    }
+    ;
     // Nemo nach oben/unten bewegen durch Mausklick in positionNemo < Bereich / positionNemo > Bereich
     function checkPositionNemo(_event) {
         //let clickPositionX: number = _event.clientX;  
@@ -72,7 +99,7 @@ var FutterNemo;
         let clickPositionY = _event.clientY; // clientY ist Werte WO geklickt wurde
         let positionNemo = FutterNemo.nemo.checkNemo(); // positionNemo kann direkt in compare() �bergeben werden, da compare() direkt in checkPositionNemo aufgerufen wird
         FutterNemo.nemo.moveNemo(clickPositionY); // Per Mausclick Nemo hoch/runter steuern in Nemo.ts
-        FutterNemo.nemo.collision();
+        //        nemo.collision();
     }
 })(FutterNemo || (FutterNemo = {})); // namespace zu
 //# sourceMappingURL=Canvas.js.map

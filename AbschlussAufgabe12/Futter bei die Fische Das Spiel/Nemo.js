@@ -36,30 +36,6 @@ var FutterNemo;
             return position;
         }
         ;
-        // collision in Nemo abfragen, da hier direkt this.x/this.y abgefragt werden kann ohne weitere Variable
-        collision() {
-            for (let i = 0; i < FutterNemo.arraySharks.length; i++) {
-                let calc = FutterNemo.arraySharks[i].y + 60; // Pixelwert anpassen der HitBox
-                let distanceX = this.x - FutterNemo.arraySharks[i].x; // distanceX ist NemoX - SharkX rechnen
-                let distanceY = this.y - calc; // distanceY ist NemoY - SharkX - (Pixelwert anpassen der HitBox) rechnen
-                //console.log("Shark: " + arraySharks[i].x);
-                //console.log("Shark: " + arraySharks[i].y);
-                //console.log("y: " + calc);
-                if (distanceX < 90 && distanceX > -20) {
-                    if (distanceY < 30 && distanceY > -40) {
-                        this.gameOver(); // wenn BEIDE IF-Abfragen zutreffen, dann gameOver()
-                    }
-                }
-            }
-        }
-        // Alert Box wenn Sharks und Nemos HitBoxen sich treffen
-        gameOver() {
-            window.alert("Oh nein, Nemo wurde gefressen!"); // Alert Box
-            if (window.alert) {
-                FutterNemo.init();
-                location.reload();
-            }
-        }
     }
     FutterNemo.Nemo = Nemo; // class  Nemo schlie�en
 })(FutterNemo || (FutterNemo = {})); //namespace zu

@@ -71,6 +71,7 @@ namespace FutterNemo {
         // Aufruf der draw und move Funktionen
         moveObjects();
         drawObjects();
+        collision();
     }
 
     // MoveObjects-Funktion
@@ -86,6 +87,37 @@ namespace FutterNemo {
             superclass[i].draw();
         }
     }
+    
+    // collision abfragen, da hier direkt this.x/this.y abgefragt werden kann ohne weitere Variable
+       function collision(): void {
+            for (let i: number = 0; i < arraySharks.length; i++) {          // for-Schleife iteriert Array von Sharks durch und
+                let calc: number = arraySharks[i].y + 60;                   // Pixelwert anpassen der HitBox
+                let distanceX: number = nemo.x - arraySharks[i].x;          // distanceX ist NemoX - SharkX rechnen
+                let distanceY: number = nemo.y - calc;                      // distanceY ist NemoY - SharkX - (Pixelwert anpassen der HitBox) rechnen
+                //console.log("Shark: " + arraySharks[i].x);
+                //console.log("Shark: " + arraySharks[i].y);
+                //console.log("y: " + calc);
+                
+                if (distanceX < 90 && distanceX > - 20) {                   // Bereich in der Abstand in XRichtung von Nemo und Shark sein darf
+
+                    if (distanceY < 30 && distanceY > -40) {                // Bereich in der Abstand in YRichtung von Nemo und Shark sein darf
+                        gameOver();                                    // wenn BEIDE IF-Abfragen zutreffen, dann gameOver()
+                        // console.log("treffer");
+                    }
+                }
+            }
+        };
+
+        // Alert Box wenn Sharks und Nemos HitBoxen sich treffen
+       function gameOver(): void {
+            window.alert("Oh nein, Nemo wurde gefressen!");                 // Alert Box
+            if (window.alert) {                                             // Fenster neu laden = Neustart des Spiels -> init()
+                init();
+                location.reload();
+            }
+        };
+
+
 
 
     // Nemo nach oben/unten bewegen durch Mausklick in positionNemo < Bereich / positionNemo > Bereich
@@ -97,7 +129,7 @@ namespace FutterNemo {
         let positionNemo: number = nemo.checkNemo();                                          // positionNemo kann direkt in compare() übergeben werden, da compare() direkt in checkPositionNemo aufgerufen wird
 
         nemo.moveNemo(clickPositionY);                                                        // Per Mausclick Nemo hoch/runter steuern in Nemo.ts
-        nemo.collision();
+//        nemo.collision();
     }
 
 
