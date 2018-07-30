@@ -1,4 +1,4 @@
-namespace FutterNemo { //neuer nc
+namespace FutterNemo {
 
     export class Nemo extends Superclass {
         
@@ -41,35 +41,6 @@ namespace FutterNemo { //neuer nc
 
             return position;
         };
-        
-//        // collision in Nemo abfragen, da hier direkt this.x/this.y abgefragt werden kann ohne weitere Variable
-//        collision(): void {
-//            for (let i: number = 0; i < arraySharks.length; i++) {          // for-Schleife iteriert Array von Sharks durch und
-//                let calc: number = arraySharks[i].y + 60;                   // Pixelwert anpassen der HitBox
-//                let distanceX: number = this.x - arraySharks[i].x;          // distanceX ist NemoX - SharkX rechnen
-//                let distanceY: number = this.y - calc;                      // distanceY ist NemoY - SharkX - (Pixelwert anpassen der HitBox) rechnen
-//                //console.log("Shark: " + arraySharks[i].x);
-//                //console.log("Shark: " + arraySharks[i].y);
-//                //console.log("y: " + calc);
-//                
-//                if (distanceX < 90 && distanceX > - 20) {                   // Bereich in der Abstand in XRichtung von Nemo und Shark sein darf
-//
-//                    if (distanceY < 30 && distanceY > -40) {                // Bereich in der Abstand in YRichtung von Nemo und Shark sein darf
-//                        this.gameOver();                                    // wenn BEIDE IF-Abfragen zutreffen, dann gameOver()
-//                        // console.log("treffer");
-//                    }
-//                }
-//            }
-//        }
-//
-//        // Alert Box wenn Sharks und Nemos HitBoxen sich treffen
-//        gameOver(): void {
-//            window.alert("Oh nein, Nemo wurde gefressen!");                 // Alert Box
-//            if (window.alert) {                                             // Fenster neu laden = Neustart des Spiels -> init()
-//                init();
-//                location.reload();
-//            }
-//        }
 //
     } // class  Nemo schlieﬂen
 

@@ -33,7 +33,7 @@ namespace FutterNemo {
         
         // Sharks in Sichtfeld anzeigen
         setRandompositionY(): void {
-            this.y = Math.random() * crc2.canvas.height - 200;
+            this.y = Math.random() * crc2.canvas.height - 100;
         };     
 
        

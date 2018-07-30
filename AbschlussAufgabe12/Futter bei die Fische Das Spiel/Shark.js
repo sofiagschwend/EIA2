@@ -27,7 +27,7 @@ var FutterNemo;
         }
         // Sharks in Sichtfeld anzeigen
         setRandompositionY() {
-            this.y = Math.random() * FutterNemo.crc2.canvas.height - 200;
+            this.y = Math.random() * FutterNemo.crc2.canvas.height - 100;
         }
         ;
         draw() {

@@ -2,7 +2,7 @@ var FutterNemo;
 (function (FutterNemo) {
     window.addEventListener("load", start);
     let superclass = [];
-    FutterNemo.arraySharks = [];
+    let arraySharks = [];
     let imgData; // Variable, in der das Hintergrundbild abgespeichert wird (siehe Init-Funktion)
     function start(_event) {
         let button = document.getElementById("startButton");
@@ -26,7 +26,7 @@ var FutterNemo;
         for (let i = 0; i < 7; i++) {
             let shark = new FutterNemo.Shark();
             superclass.push(shark);
-            FutterNemo.arraySharks.push(shark);
+            arraySharks.push(shark);
         }
         // LUFTBLASEN zeichnen
         for (let i = 0; i < 15; i++) {
@@ -65,11 +65,11 @@ var FutterNemo;
             superclass[i].draw();
         }
     }
-    // collision abfragen, da hier direkt this.x/this.y abgefragt werden kann ohne weitere Variable
+    // collision abfragen
     function collision() {
-        for (let i = 0; i < FutterNemo.arraySharks.length; i++) {
-            let calc = FutterNemo.arraySharks[i].y + 60; // Pixelwert anpassen der HitBox
-            let distanceX = FutterNemo.nemo.x - FutterNemo.arraySharks[i].x; // distanceX ist NemoX - SharkX rechnen
+        for (let i = 0; i < arraySharks.length; i++) {
+            let calc = arraySharks[i].y + 60; // Pixelwert anpassen der HitBox
+            let distanceX = FutterNemo.nemo.x - arraySharks[i].x; // distanceX ist NemoX - SharkX rechnen
             let distanceY = FutterNemo.nemo.y - calc; // distanceY ist NemoY - SharkX - (Pixelwert anpassen der HitBox) rechnen
             //console.log("Shark: " + arraySharks[i].x);
             //console.log("Shark: " + arraySharks[i].y);
@@ -97,9 +97,7 @@ var FutterNemo;
         //console.log("Maus: " +  _event.clientX);      
         //console.log("Maus: " +  _event.clientY);                                            // clientX bleibt pro Durchgang gleich
         let clickPositionY = _event.clientY; // clientY ist Werte WO geklickt wurde
-        let positionNemo = FutterNemo.nemo.checkNemo(); // positionNemo kann direkt in compare() �bergeben werden, da compare() direkt in checkPositionNemo aufgerufen wird
         FutterNemo.nemo.moveNemo(clickPositionY); // Per Mausclick Nemo hoch/runter steuern in Nemo.ts
-        //        nemo.collision();
     }
 })(FutterNemo || (FutterNemo = {})); // namespace zu
 //# sourceMappingURL=Canvas.js.map
